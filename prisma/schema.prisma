@@ -1,0 +1,243 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  PATIENT
+  PRACTITIONER
+  ADMIN
+}
+
+enum VerificationStatus {
+  DRAFT
+  PENDING
+  VERIFIED
+  REJECTED
+  DISABLED
+}
+
+enum DocumentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum BookingStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED_BY_PATIENT
+  CANCELLED_BY_PRACTITIONER
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  CANCELLED
+  REFUNDED
+}
+
+enum TreatmentDocumentType {
+  BEFORE
+  AFTER
+  PROGRESS
+  ATTACHMENT
+}
+
+model User {
+  id                  String               @id @default(cuid())
+  name                String
+  email               String               @unique
+  phone               String?              @unique
+  passwordHash        String
+  role                UserRole
+  isActive            Boolean              @default(true)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  patientProfile      PatientProfile?
+  practitionerProfile PractitionerProfile?
+  notifications       Notification[]
+}
+
+model PatientProfile {
+  id               String    @id @default(cuid())
+  userId           String    @unique
+  address          String?
+  birthDate        DateTime?
+  gender           String?
+  emergencyContact String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bookings         Booking[]
+  reviews          Review[]
+}
+
+model PractitionerProfile {
+  id                 String                  @id @default(cuid())
+  userId             String                  @unique
+  profession         String
+  specialization     String?
+  bio                String?
+  experienceYears    Int?
+  serviceArea        String?
+  licenseNumber      String?
+  verificationStatus VerificationStatus      @default(DRAFT)
+  isAvailable        Boolean                 @default(false)
+  createdAt          DateTime                @default(now())
+  updatedAt          DateTime                @updatedAt
+  user               User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documents          PractitionerDocument[]
+  services           PractitionerService[]
+  schedules          AvailabilitySchedule[]
+  bookings           Booking[]
+  reviews            Review[]
+}
+
+model PractitionerDocument {
+  id             String              @id @default(cuid())
+  practitionerId String
+  documentType   String
+  fileUrl        String
+  status         DocumentStatus      @default(PENDING)
+  rejectionReason String?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  practitioner   PractitionerProfile @relation(fields: [practitionerId], references: [id], onDelete: Cascade)
+}
+
+model ServiceCategory {
+  id          String                @id @default(cuid())
+  name        String
+  slug        String                @unique
+  description String?
+  isActive    Boolean               @default(true)
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+  services    PractitionerService[]
+}
+
+model PractitionerService {
+  id              String              @id @default(cuid())
+  practitionerId  String
+  categoryId      String
+  name            String
+  description     String?
+  price           Int
+  durationMinutes Int
+  isActive        Boolean             @default(true)
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  practitioner    PractitionerProfile @relation(fields: [practitionerId], references: [id], onDelete: Cascade)
+  category        ServiceCategory     @relation(fields: [categoryId], references: [id])
+  bookings        Booking[]
+}
+
+model AvailabilitySchedule {
+  id             String              @id @default(cuid())
+  practitionerId String
+  dayOfWeek      Int
+  startTime      String
+  endTime        String
+  isActive       Boolean             @default(true)
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  practitioner   PractitionerProfile @relation(fields: [practitionerId], references: [id], onDelete: Cascade)
+}
+
+model Booking {
+  id                 String              @id @default(cuid())
+  patientId          String
+  practitionerId     String
+  serviceId          String
+  bookingDate        DateTime
+  bookingTime        String
+  address            String
+  notes              String?
+  status             BookingStatus       @default(PENDING)
+  cancellationReason String?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  patient            PatientProfile      @relation(fields: [patientId], references: [id])
+  practitioner       PractitionerProfile @relation(fields: [practitionerId], references: [id])
+  service            PractitionerService @relation(fields: [serviceId], references: [id])
+  cppt               CPPT?
+  documents          TreatmentDocument[]
+  invoice            Invoice?
+  review             Review?
+}
+
+model CPPT {
+  id              String              @id @default(cuid())
+  bookingId       String              @unique
+  subjective      String?
+  objective       String?
+  assessment      String?
+  plan            String?
+  actionTaken     String?
+  education       String?
+  followUpPlan    String?
+  additionalNotes String?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  booking         Booking             @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  documents       TreatmentDocument[]
+}
+
+model TreatmentDocument {
+  id           String                @id @default(cuid())
+  bookingId    String
+  cpptId       String?
+  fileUrl      String
+  documentType TreatmentDocumentType
+  description  String?
+  consentGiven Boolean               @default(false)
+  createdAt    DateTime              @default(now())
+  booking      Booking               @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  cppt         CPPT?                 @relation(fields: [cpptId], references: [id], onDelete: SetNull)
+}
+
+model Invoice {
+  id            String        @id @default(cuid())
+  bookingId     String        @unique
+  invoiceNumber String        @unique
+  subtotal      Int
+  additionalFee Int           @default(0)
+  discount      Int           @default(0)
+  total         Int
+  paymentStatus PaymentStatus @default(UNPAID)
+  issuedAt      DateTime      @default(now())
+  paidAt        DateTime?
+  booking       Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model Review {
+  id             String              @id @default(cuid())
+  bookingId      String              @unique
+  patientId      String
+  practitionerId String
+  rating         Int
+  comment        String?
+  createdAt      DateTime            @default(now())
+  booking        Booking             @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  patient        PatientProfile      @relation(fields: [patientId], references: [id])
+  practitioner   PractitionerProfile @relation(fields: [practitionerId], references: [id])
+}
+
+model Notification {
+  id        String    @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  type      String
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

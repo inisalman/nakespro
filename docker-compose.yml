@@ -1,0 +1,21 @@
+﻿services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nakespro-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nakespro
+      POSTGRES_PASSWORD: nakespro
+      POSTGRES_DB: nakespro
+    ports:
+      - "5433:5432"
+    volumes:
+      - nakespro-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nakespro -d nakespro"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  nakespro-postgres-data:
