@@ -9,6 +9,8 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 FROM base AS builder
+ARG DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholder"
+ENV DATABASE_URL=$DATABASE_URL
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npx prisma generate
