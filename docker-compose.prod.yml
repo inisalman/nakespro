@@ -27,6 +27,7 @@ services:
       NODE_ENV: production
       PORT: 3000
       HOSTNAME: 0.0.0.0
+      AUTH_TRUST_HOST: "true"
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,6 +44,8 @@ services:
       - migrate
     env_file:
       - .env.production
+    environment:
+      AUTH_TRUST_HOST: "true"
     command: ["npx", "prisma", "migrate", "deploy"]
     depends_on:
       postgres:
