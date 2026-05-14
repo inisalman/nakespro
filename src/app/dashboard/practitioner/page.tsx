@@ -1,6 +1,8 @@
 import { CalendarDays, ClipboardList, FileText, Wallet } from "lucide-react";
+import { UserRole } from "@/generated/prisma/enums";
 import { DashboardShell } from "@/components/dashboard/dashboard-shell";
 import { Card } from "@/components/ui/card";
+import { requireRole } from "@/lib/auth/dal";
 
 const stats = [
   [CalendarDays, "Booking hari ini", "5"],
@@ -9,7 +11,9 @@ const stats = [
   [Wallet, "Pendapatan", "Rp3,2 jt"],
 ];
 
-export default function PractitionerDashboardPage() {
+export default async function PractitionerDashboardPage() {
+  await requireRole(UserRole.PRACTITIONER);
+
   return (
     <DashboardShell title="Dashboard Nakes" description="Kelola jadwal, booking, CPPT, dokumentasi, dan invoice layanan Anda.">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">

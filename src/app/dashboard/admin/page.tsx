@@ -1,6 +1,8 @@
 import { CalendarCheck, FileText, ShieldCheck, Users } from "lucide-react";
+import { UserRole } from "@/generated/prisma/enums";
 import { DashboardShell } from "@/components/dashboard/dashboard-shell";
 import { Card } from "@/components/ui/card";
+import { requireRole } from "@/lib/auth/dal";
 
 const stats = [
   [Users, "Pasien", "128"],
@@ -9,7 +11,9 @@ const stats = [
   [FileText, "Invoice", "198"],
 ];
 
-export default function AdminDashboardPage() {
+export default async function AdminDashboardPage() {
+  await requireRole(UserRole.ADMIN);
+
   return (
     <DashboardShell title="Dashboard Admin" description="Pantau pengguna, verifikasi nakes, booking, invoice, dan kategori layanan.">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">

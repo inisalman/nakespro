@@ -1,13 +1,19 @@
 import Link from "next/link";
 import { HeartPulse } from "lucide-react";
+import { UserRole } from "@/generated/prisma/enums";
+import { LogoutButton } from "@/components/auth/logout-button";
+import { getCurrentUser } from "@/lib/auth/dal";
 
-const nav = [
-  ["/dashboard/patient", "Pasien"],
-  ["/dashboard/practitioner", "Nakes"],
-  ["/dashboard/admin", "Admin"],
-];
+const nav = {
+  [UserRole.PATIENT]: [["/dashboard/patient", "Dashboard Pasien"]],
+  [UserRole.PRACTITIONER]: [["/dashboard/practitioner", "Dashboard Nakes"]],
+  [UserRole.ADMIN]: [["/dashboard/admin", "Dashboard Admin"]],
+};
 
-export function DashboardShell({ title, description, children }: { title: string; description: string; children: React.ReactNode }) {
+export async function DashboardShell({ title, description, children }: { title: string; description: string; children: React.ReactNode }) {
+  const user = await getCurrentUser();
+  const links = user ? nav[user.role] : [];
+
   return (
     <main className="min-h-screen bg-slate-50">
       <aside className="fixed inset-y-0 left-0 hidden w-64 border-r border-slate-200 bg-white p-6 lg:block">
@@ -18,12 +24,15 @@ export function DashboardShell({ title, description, children }: { title: string
           NakesPro
         </Link>
         <nav className="mt-10 space-y-2">
-          {nav.map(([href, label]) => (
+          {links.map(([href, label]) => (
             <Link key={href} href={href} className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-teal-50 hover:text-teal-700">
-              Dashboard {label}
+              {label}
             </Link>
           ))}
         </nav>
+        <div className="absolute bottom-6 left-6 right-6">
+          <LogoutButton />
+        </div>
       </aside>
       <section className="lg:pl-64">
         <header className="border-b border-slate-200 bg-white px-4 py-6 sm:px-8">

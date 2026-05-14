@@ -42,18 +42,18 @@
 
 ## 3. Authentication dan Authorization
 
-- [ ] Tentukan pendekatan auth: Auth.js atau custom session/JWT.
-- [ ] Implementasi register pasien.
-- [ ] Implementasi register tenaga kesehatan.
-- [ ] Implementasi login.
-- [ ] Implementasi logout.
-- [ ] Implementasi proteksi route.
-- [ ] Implementasi role-based access control.
-- [ ] Buat middleware auth.
-- [ ] Buat helper untuk mendapatkan current user.
-- [ ] Buat halaman login.
-- [ ] Buat halaman register pasien.
-- [ ] Buat halaman register tenaga kesehatan.
+- [x] Tentukan pendekatan auth: Auth.js atau custom session/JWT.
+- [x] Implementasi register pasien.
+- [x] Implementasi register tenaga kesehatan.
+- [x] Implementasi login.
+- [x] Implementasi logout.
+- [x] Implementasi proteksi route.
+- [x] Implementasi role-based access control.
+- [x] Buat middleware auth.
+- [x] Buat helper untuk mendapatkan current user.
+- [x] Buat halaman login.
+- [x] Buat halaman register pasien.
+- [x] Buat halaman register tenaga kesehatan.
 
 ## 4. Layout dan UI Dasar
 

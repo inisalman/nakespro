@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { HeartPulse } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { LoginForm } from "./login-form";
 
 export default function LoginPage() {
   return (
@@ -16,17 +15,7 @@ export default function LoginPage() {
         </Link>
         <h1 className="text-2xl font-bold">Masuk ke akun Anda</h1>
         <p className="mt-2 text-sm text-slate-600">Kelola booking, CPPT, invoice, dan layanan kesehatan Anda.</p>
-        <form className="mt-8 space-y-4">
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-slate-700">Email</label>
-            <Input type="email" placeholder="nama@email.com" />
-          </div>
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-slate-700">Password</label>
-            <Input type="password" placeholder="Masukkan password" />
-          </div>
-          <Button className="w-full" type="button">Masuk</Button>
-        </form>
+        <LoginForm />
         <p className="mt-6 text-center text-sm text-slate-600">
           Belum punya akun? <Link href="/register" className="font-semibold text-teal-700">Daftar</Link>
         </p>

@@ -1,6 +1,8 @@
 import { CalendarCheck, ClipboardList, FileText, Star } from "lucide-react";
+import { UserRole } from "@/generated/prisma/enums";
 import { DashboardShell } from "@/components/dashboard/dashboard-shell";
 import { Card } from "@/components/ui/card";
+import { requireRole } from "@/lib/auth/dal";
 
 const stats = [
   [CalendarCheck, "Booking aktif", "2"],
@@ -9,7 +11,9 @@ const stats = [
   [Star, "Ulasan tertunda", "1"],
 ];
 
-export default function PatientDashboardPage() {
+export default async function PatientDashboardPage() {
+  await requireRole(UserRole.PATIENT);
+
   return (
     <DashboardShell title="Dashboard Pasien" description="Pantau booking, invoice, CPPT, dan dokumentasi tindakan Anda.">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
