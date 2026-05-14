@@ -6,6 +6,7 @@ import { UserRole } from "@/generated/prisma/enums";
 import { prisma } from "@/lib/prisma";
 import { hashPassword } from "@/lib/auth/password";
 import { dashboardPathForRole, requireAuth } from "@/lib/auth/dal";
+import { createUniquePractitionerSlug } from "@/lib/practitioners/slug";
 import { loginSchema, patientRegisterSchema, practitionerCompleteSchema, practitionerRegisterSchema } from "@/lib/auth/schemas";
 import { signIn, signOut } from "../../../auth";
 
@@ -108,6 +109,7 @@ export async function registerPractitioner(_state: AuthActionState, formData: Fo
   }
 
   const passwordHash = await hashPassword(parsed.data.password);
+  const slug = await createUniquePractitionerSlug(parsed.data.name);
 
   await prisma.user.create({
     data: {
@@ -116,7 +118,7 @@ export async function registerPractitioner(_state: AuthActionState, formData: Fo
       phone: parsed.data.phone,
       passwordHash,
       role: UserRole.PRACTITIONER,
-      practitionerProfile: { create: { profession: parsed.data.profession } },
+      practitionerProfile: { create: { slug, profession: parsed.data.profession } },
     },
   });
 
@@ -144,6 +146,8 @@ export async function completePractitionerProfile(_state: AuthActionState, formD
 
   const user = await requireAuth();
 
+  const slug = await createUniquePractitionerSlug(user.name ?? user.email.split("@")[0]);
+
   await prisma.user.update({
     where: { id: user.id },
     data: {
@@ -151,7 +155,7 @@ export async function completePractitionerProfile(_state: AuthActionState, formD
       patientProfile: user.patientProfile ? { delete: true } : undefined,
       practitionerProfile: {
         upsert: {
-          create: { profession: parsed.data.profession },
+          create: { slug, profession: parsed.data.profession },
           update: { profession: parsed.data.profession },
         },
       },

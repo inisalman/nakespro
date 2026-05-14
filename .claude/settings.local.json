@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Remove-Item *)",
+      "PowerShell(npm install *)",
+      "PowerShell(npx prisma init --datasource-provider postgresql)"
+    ]
+  }
+}

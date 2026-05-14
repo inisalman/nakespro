@@ -1,43 +1,55 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { UserRole } from "@/generated/prisma/enums";
 import { Navbar } from "@/components/marketing/navbar";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { requireRole } from "@/lib/auth/dal";
+import { prisma } from "@/lib/prisma";
+import { BookingForm } from "./booking-form";
 
-export default function NewBookingPage() {
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+
+function valueOf(searchParams: Record<string, string | string[] | undefined>, key: string) {
+  const value = searchParams[key];
+  return Array.isArray(value) ? value[0] : value;
+}
+
+export default async function NewBookingPage({ searchParams }: { searchParams: SearchParams }) {
+  const user = await requireRole(UserRole.PATIENT);
+  const params = await searchParams;
+  const practitionerId = valueOf(params, "practitionerId");
+  const serviceId = valueOf(params, "serviceId");
+
+  if (!practitionerId) {
+    notFound();
+  }
+
+  const practitioner = await prisma.practitionerProfile.findFirst({
+    where: { id: practitionerId, isAvailable: true },
+    include: {
+      user: { select: { name: true } },
+      services: { where: { isActive: true }, orderBy: { price: "asc" }, select: { id: true, name: true, price: true, durationMinutes: true } },
+    },
+  });
+
+  if (!practitioner || !practitioner.services.length) {
+    notFound();
+  }
+
+  const selectedServiceId = practitioner.services.some((service) => service.id === serviceId) ? serviceId : practitioner.services[0].id;
+  const profile = user.patientProfile?.id
+    ? await prisma.patientProfile.findUnique({ where: { id: user.patientProfile.id }, select: { address: true } })
+    : null;
+
   return (
     <main className="min-h-screen bg-slate-50">
       <Navbar />
       <section className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-        <Link href="/practitioners/demo" className="text-sm font-semibold text-teal-700">Kembali ke profil nakes</Link>
+        <Link href={`/${practitioner.slug}`} className="text-sm font-semibold text-teal-700">Kembali ke profil nakes</Link>
         <Card className="mt-6 p-6 sm:p-8">
           <h1 className="text-2xl font-bold text-slate-950">Booking Layanan</h1>
-          <p className="mt-2 text-sm text-slate-600">Isi detail jadwal dan alamat layanan. Nakes akan mengonfirmasi permintaan Anda.</p>
-          <form className="mt-8 grid gap-5">
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-slate-700">Layanan</label>
-              <Input defaultValue="Perawatan Luka Dasar" />
-            </div>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-slate-700">Tanggal</label>
-                <Input type="date" />
-              </div>
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-slate-700">Jam</label>
-                <Input type="time" />
-              </div>
-            </div>
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-slate-700">Alamat layanan</label>
-              <Input placeholder="Masukkan alamat lengkap" />
-            </div>
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-slate-700">Catatan tambahan</label>
-              <textarea className="min-h-28 w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/15" placeholder="Contoh: kondisi luka, akses rumah, atau kebutuhan khusus" />
-            </div>
-            <Button type="button">Kirim Booking</Button>
-          </form>
+          <p className="mt-2 text-sm text-slate-600">Isi detail jadwal dan alamat layanan untuk {practitioner.user.name ?? "tenaga kesehatan"}. Nakes akan mengonfirmasi permintaan Anda.</p>
+          <BookingForm practitionerId={practitioner.id} selectedServiceId={selectedServiceId} defaultAddress={profile?.address ?? ""} services={practitioner.services} />
         </Card>
       </section>
     </main>

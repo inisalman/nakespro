@@ -90,57 +90,57 @@
 ### 6.1 Profil Pasien
 
 - [x] Buat halaman dashboard pasien.
-- [ ] Buat halaman profil pasien.
-- [ ] Implementasi edit profil pasien.
-- [ ] Implementasi alamat utama pasien.
+- [x] Buat halaman profil pasien.
+- [x] Implementasi edit profil pasien.
+- [x] Implementasi alamat utama pasien.
 
 ### 6.2 Pencarian Tenaga Kesehatan
 
 - [x] Buat halaman daftar tenaga kesehatan.
-- [ ] Implementasi filter kategori layanan.
-- [ ] Implementasi filter lokasi.
-- [ ] Implementasi filter harga.
-- [ ] Implementasi filter rating.
-- [ ] Implementasi pencarian berdasarkan nama/profesi.
-- [ ] Buat card tenaga kesehatan.
-- [ ] Buat empty state jika hasil pencarian kosong.
+- [x] Implementasi filter kategori layanan.
+- [x] Implementasi filter lokasi.
+- [x] Implementasi filter harga.
+- [x] Implementasi filter rating.
+- [x] Implementasi pencarian berdasarkan nama/profesi.
+- [x] Buat card tenaga kesehatan.
+- [x] Buat empty state jika hasil pencarian kosong.
 
 ### 6.3 Detail Tenaga Kesehatan
 
-- [ ] Buat halaman detail tenaga kesehatan.
-- [ ] Tampilkan profil tenaga kesehatan.
-- [ ] Tampilkan badge verifikasi.
-- [ ] Tampilkan daftar layanan dan harga.
-- [ ] Tampilkan area layanan.
-- [ ] Tampilkan jadwal tersedia.
-- [ ] Tampilkan rating dan ulasan.
-- [ ] Tambahkan tombol booking.
+- [x] Buat halaman detail tenaga kesehatan.
+- [x] Tampilkan profil tenaga kesehatan.
+- [x] Tampilkan badge verifikasi.
+- [x] Tampilkan daftar layanan dan harga.
+- [x] Tampilkan area layanan.
+- [x] Tampilkan jadwal tersedia.
+- [x] Tampilkan rating dan ulasan.
+- [x] Tambahkan tombol booking.
 
 ### 6.4 Booking Pasien
 
 - [x] Buat form booking.
-- [ ] Validasi pilihan layanan.
-- [ ] Validasi tanggal dan jam.
-- [ ] Validasi alamat layanan.
-- [ ] Simpan booking ke database.
-- [ ] Tampilkan halaman sukses booking.
-- [ ] Buat halaman riwayat booking pasien.
-- [ ] Buat halaman detail booking pasien.
+- [x] Validasi pilihan layanan.
+- [x] Validasi tanggal dan jam.
+- [x] Validasi alamat layanan.
+- [x] Simpan booking ke database.
+- [x] Tampilkan halaman sukses booking.
+- [x] Buat halaman riwayat booking pasien.
+- [x] Buat halaman detail booking pasien.
 
 ### 6.5 Invoice dan CPPT Pasien
 
-- [ ] Tampilkan invoice pasien.
-- [ ] Tampilkan status pembayaran.
-- [ ] Tampilkan CPPT setelah layanan selesai.
-- [ ] Tampilkan dokumentasi tindakan.
-- [ ] Batasi akses hanya untuk pasien terkait.
+- [x] Tampilkan invoice pasien.
+- [x] Tampilkan status pembayaran.
+- [x] Tampilkan CPPT setelah layanan selesai.
+- [x] Tampilkan dokumentasi tindakan.
+- [x] Batasi akses hanya untuk pasien terkait.
 
 ### 6.6 Rating dan Ulasan
 
-- [ ] Buat form rating setelah booking selesai.
-- [ ] Validasi satu booking hanya satu ulasan.
-- [ ] Simpan rating dan ulasan.
-- [ ] Tampilkan rating di profil nakes.
+- [x] Buat form rating setelah booking selesai.
+- [x] Validasi satu booking hanya satu ulasan.
+- [x] Simpan rating dan ulasan.
+- [x] Tampilkan rating di profil nakes.
 
 ## 7. Fitur Tenaga Kesehatan
 

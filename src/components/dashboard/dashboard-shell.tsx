@@ -5,7 +5,12 @@ import { LogoutButton } from "@/components/auth/logout-button";
 import { getCurrentUser } from "@/lib/auth/dal";
 
 const nav = {
-  [UserRole.PATIENT]: [["/dashboard/patient", "Dashboard Pasien"]],
+  [UserRole.PATIENT]: [
+    ["/dashboard/patient", "Dashboard Pasien"],
+    ["/dashboard/patient/profile", "Profil Pasien"],
+    ["/dashboard/patient/bookings", "Riwayat Booking"],
+    ["/dashboard/patient/invoices", "Invoice & CPPT"],
+  ],
   [UserRole.PRACTITIONER]: [["/dashboard/practitioner", "Dashboard Nakes"]],
   [UserRole.ADMIN]: [["/dashboard/admin", "Dashboard Admin"]],
 };
