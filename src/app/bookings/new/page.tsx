@@ -36,7 +36,8 @@ export default async function NewBookingPage({ searchParams }: { searchParams: S
     notFound();
   }
 
-  const selectedServiceId = practitioner.services.some((service) => service.id === serviceId) ? serviceId : practitioner.services[0].id;
+  const matchedService = serviceId ? practitioner.services.find((service) => service.id === serviceId) : undefined;
+  const selectedServiceId = matchedService?.id ?? practitioner.services[0].id;
   const profile = user.patientProfile?.id
     ? await prisma.patientProfile.findUnique({ where: { id: user.patientProfile.id }, select: { address: true } })
     : null;

@@ -16,7 +16,7 @@ export default async function PatientDashboardPage() {
     ? await Promise.all([
         prisma.booking.count({ where: { patientId, status: { in: activeStatuses } } }),
         prisma.invoice.count({ where: { booking: { patientId } } }),
-        prisma.cppt.count({ where: { booking: { patientId, status: BookingStatus.COMPLETED } } }),
+        prisma.cPPT.count({ where: { booking: { patientId, status: BookingStatus.COMPLETED } } }),
         prisma.booking.count({ where: { patientId, status: BookingStatus.COMPLETED, review: null } }),
       ])
     : [0, 0, 0, 0];
