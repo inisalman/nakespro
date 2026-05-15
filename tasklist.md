@@ -147,136 +147,136 @@
 ### 7.1 Dashboard Nakes
 
 - [x] Buat halaman dashboard nakes.
-- [ ] Tampilkan booking hari ini.
-- [ ] Tampilkan permintaan booking baru.
-- [ ] Tampilkan CPPT belum lengkap.
-- [ ] Tampilkan invoice dan pendapatan.
-- [ ] Tampilkan rating rata-rata.
+- [x] Tampilkan booking hari ini.
+- [x] Tampilkan permintaan booking baru.
+- [x] Tampilkan CPPT belum lengkap.
+- [x] Tampilkan invoice dan pendapatan.
+- [x] Tampilkan rating rata-rata.
 
 ### 7.2 Profil Nakes
 
-- [ ] Buat halaman profil nakes.
-- [ ] Implementasi edit profil nakes.
-- [ ] Upload foto profil.
-- [ ] Input profesi.
-- [ ] Input spesialisasi.
-- [ ] Input pengalaman kerja.
-- [ ] Input area layanan.
-- [ ] Input nomor STR/SIP jika tersedia.
-- [ ] Upload dokumen verifikasi.
-- [ ] Submit profil untuk verifikasi.
+- [x] Buat halaman profil nakes.
+- [x] Implementasi edit profil nakes.
+- [x] Upload foto profil. (URL sementara; upload file asli di Section 11.)
+- [x] Input profesi.
+- [x] Input spesialisasi.
+- [x] Input pengalaman kerja.
+- [x] Input area layanan.
+- [x] Input nomor STR/SIP jika tersedia.
+- [x] Upload dokumen verifikasi. (URL sementara; upload file asli di Section 11.)
+- [x] Submit profil untuk verifikasi.
 
 ### 7.3 Manajemen Layanan
 
-- [ ] Buat halaman daftar layanan nakes.
-- [ ] Buat form tambah layanan.
-- [ ] Buat form edit layanan.
-- [ ] Implementasi aktif/nonaktif layanan.
-- [ ] Validasi harga layanan.
-- [ ] Validasi durasi layanan.
+- [x] Buat halaman daftar layanan nakes.
+- [x] Buat form tambah layanan.
+- [x] Buat form edit layanan.
+- [x] Implementasi aktif/nonaktif layanan.
+- [x] Validasi harga layanan.
+- [x] Validasi durasi layanan.
 
 ### 7.4 Manajemen Jadwal
 
-- [ ] Buat halaman jadwal nakes.
-- [ ] Tambah jadwal berdasarkan hari.
-- [ ] Edit jadwal.
-- [ ] Hapus jadwal.
-- [ ] Set status menerima pasien.
+- [x] Buat halaman jadwal nakes.
+- [x] Tambah jadwal berdasarkan hari.
+- [x] Edit jadwal.
+- [x] Hapus jadwal.
+- [x] Set status menerima pasien.
 
 ### 7.5 Manajemen Booking Nakes
 
-- [ ] Buat halaman daftar booking nakes.
-- [ ] Buat halaman detail booking nakes.
-- [ ] Implementasi terima booking.
-- [ ] Implementasi tolak booking dengan alasan.
-- [ ] Implementasi ubah status menjadi berlangsung.
-- [ ] Implementasi ubah status menjadi selesai.
+- [x] Buat halaman daftar booking nakes.
+- [x] Buat halaman detail booking nakes.
+- [x] Implementasi terima booking.
+- [x] Implementasi tolak booking dengan alasan.
+- [x] Implementasi ubah status menjadi berlangsung.
+- [x] Implementasi ubah status menjadi selesai.
 
 ### 7.6 CPPT Digital
 
-- [ ] Buat form CPPT digital.
-- [ ] Isi data subjektif.
-- [ ] Isi data objektif.
-- [ ] Isi assessment.
-- [ ] Isi plan.
-- [ ] Isi tindakan yang dilakukan.
-- [ ] Isi edukasi pasien.
-- [ ] Isi rencana tindak lanjut.
-- [ ] Simpan CPPT.
-- [ ] Edit CPPT sebelum final.
-- [ ] Tampilkan CPPT ke pasien setelah booking selesai.
+- [x] Buat form CPPT digital.
+- [x] Isi data subjektif.
+- [x] Isi data objektif.
+- [x] Isi assessment.
+- [x] Isi plan.
+- [x] Isi tindakan yang dilakukan.
+- [x] Isi edukasi pasien.
+- [x] Isi rencana tindak lanjut.
+- [x] Simpan CPPT.
+- [x] Edit CPPT sebelum final.
+- [x] Tampilkan CPPT ke pasien setelah booking selesai.
 
 ### 7.7 Dokumentasi Tindakan
 
-- [ ] Upload foto sebelum tindakan.
-- [ ] Upload foto setelah tindakan.
-- [ ] Upload foto perkembangan.
-- [ ] Simpan metadata dokumentasi.
-- [ ] Validasi ukuran file.
-- [ ] Validasi tipe file.
-- [ ] Batasi akses dokumentasi.
+- [x] Upload foto sebelum tindakan. (URL sementara; upload file asli di Section 11.)
+- [x] Upload foto setelah tindakan. (URL sementara; upload file asli di Section 11.)
+- [x] Upload foto perkembangan. (URL sementara; upload file asli di Section 11.)
+- [x] Simpan metadata dokumentasi.
+- [ ] Validasi ukuran file. (Dilanjutkan saat storage/upload Section 11.)
+- [ ] Validasi tipe file. (Dilanjutkan saat storage/upload Section 11.)
+- [x] Batasi akses dokumentasi.
 
 ## 8. Invoice
 
-- [ ] Buat aturan pembuatan invoice.
-- [ ] Generate nomor invoice otomatis.
-- [ ] Buat invoice setelah booking selesai.
-- [ ] Hitung subtotal.
-- [ ] Hitung biaya tambahan.
-- [ ] Hitung diskon jika ada.
-- [ ] Hitung total pembayaran.
-- [ ] Simpan invoice ke database.
+- [x] Buat aturan pembuatan invoice.
+- [x] Generate nomor invoice otomatis.
+- [x] Buat invoice setelah booking selesai.
+- [x] Hitung subtotal.
+- [x] Hitung biaya tambahan.
+- [x] Hitung diskon jika ada.
+- [x] Hitung total pembayaran.
+- [x] Simpan invoice ke database.
 - [ ] Tampilkan invoice untuk pasien.
 - [ ] Tampilkan invoice untuk nakes.
-- [ ] Tampilkan invoice untuk admin.
+- [x] Tampilkan invoice untuk admin.
 - [ ] Siapkan struktur untuk PDF invoice di tahap berikutnya.
 
 ## 9. Admin Panel
 
 ### 9.1 Dashboard Admin
 
-- [ ] Buat layout admin panel.
+- [x] Buat layout admin panel.
 - [x] Buat dashboard ringkasan admin.
-- [ ] Tampilkan total pasien.
-- [ ] Tampilkan total tenaga kesehatan.
-- [ ] Tampilkan nakes menunggu verifikasi.
-- [ ] Tampilkan total booking.
-- [ ] Tampilkan total invoice.
+- [x] Tampilkan total pasien.
+- [x] Tampilkan total tenaga kesehatan.
+- [x] Tampilkan nakes menunggu verifikasi.
+- [x] Tampilkan total booking.
+- [x] Tampilkan total invoice.
 
 ### 9.2 Manajemen Pengguna
 
-- [ ] Buat halaman daftar pasien.
-- [ ] Buat halaman daftar tenaga kesehatan.
-- [ ] Buat halaman detail pasien.
-- [ ] Buat halaman detail tenaga kesehatan.
-- [ ] Implementasi aktif/nonaktif user.
+- [x] Buat halaman daftar pasien.
+- [x] Buat halaman daftar tenaga kesehatan.
+- [x] Buat halaman detail pasien.
+- [x] Buat halaman detail tenaga kesehatan.
+- [x] Implementasi aktif/nonaktif user.
 
 ### 9.3 Verifikasi Tenaga Kesehatan
 
-- [ ] Buat halaman daftar verifikasi nakes.
-- [ ] Tampilkan dokumen verifikasi.
-- [ ] Implementasi approve verifikasi.
-- [ ] Implementasi reject verifikasi dengan alasan.
-- [ ] Kirim notifikasi hasil verifikasi.
+- [x] Buat halaman daftar verifikasi nakes.
+- [x] Tampilkan dokumen verifikasi.
+- [x] Implementasi approve verifikasi.
+- [x] Implementasi reject verifikasi dengan alasan.
+- [x] Kirim notifikasi hasil verifikasi.
 
 ### 9.4 Manajemen Kategori Layanan
 
-- [ ] Buat halaman daftar kategori layanan.
-- [ ] Tambah kategori layanan.
-- [ ] Edit kategori layanan.
-- [ ] Aktif/nonaktif kategori layanan.
+- [x] Buat halaman daftar kategori layanan.
+- [x] Tambah kategori layanan.
+- [x] Edit kategori layanan.
+- [x] Aktif/nonaktif kategori layanan.
 
 ### 9.5 Monitoring Booking dan Invoice
 
-- [ ] Buat halaman semua booking.
-- [ ] Buat halaman detail booking admin.
-- [ ] Buat halaman semua invoice.
-- [ ] Buat halaman detail invoice admin.
+- [x] Buat halaman semua booking.
+- [x] Buat halaman detail booking admin.
+- [x] Buat halaman semua invoice.
+- [x] Buat halaman detail invoice admin.
 
 ## 10. Notifikasi
 
 - [ ] Buat model notifikasi.
-- [ ] Buat helper create notification.
+- [x] Buat helper create notification.
 - [ ] Notifikasi booking baru untuk nakes.
 - [ ] Notifikasi booking diterima untuk pasien.
 - [ ] Notifikasi booking ditolak untuk pasien.

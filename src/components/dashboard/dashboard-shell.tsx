@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Bell, CalendarDays, ClipboardList, FileText, HeartPulse, LayoutGrid, Search, Settings, Users, Wallet } from "lucide-react";
+import { Bell, CalendarDays, ClipboardList, Clock, FileCheck, FileText, HeartPulse, LayoutGrid, Search, Settings, ShieldCheck, Stethoscope, Tags, Users, Wallet } from "lucide-react";
 import { UserRole } from "@/generated/prisma/enums";
 import { LogoutButton } from "@/components/auth/logout-button";
 import { getCurrentUser } from "@/lib/auth/dal";
@@ -40,6 +40,8 @@ const navByRole: Record<string, NavSection[]> = {
       title: "Praktik",
       items: [
         { href: "/dashboard/practitioner/bookings", label: "Booking", icon: CalendarDays },
+        { href: "/dashboard/practitioner/services", label: "Layanan", icon: Stethoscope },
+        { href: "/dashboard/practitioner/schedule", label: "Jadwal", icon: Clock },
         { href: "/dashboard/practitioner/cppt", label: "Catatan Tindakan", icon: ClipboardList },
         { href: "/dashboard/practitioner/invoices", label: "Invoice", icon: FileText },
         { href: "/dashboard/practitioner/patients", label: "Pasien", icon: Users },
@@ -57,6 +59,22 @@ const navByRole: Record<string, NavSection[]> = {
     {
       title: "Beranda",
       items: [{ href: "/dashboard/admin", label: "Dashboard", icon: LayoutGrid }],
+    },
+    {
+      title: "Administrasi",
+      items: [
+        { href: "/dashboard/admin/users", label: "Pengguna", icon: Users },
+        { href: "/dashboard/admin/practitioners", label: "Nakes", icon: Stethoscope },
+        { href: "/dashboard/admin/verifications", label: "Verifikasi", icon: ShieldCheck },
+        { href: "/dashboard/admin/categories", label: "Kategori", icon: Tags },
+      ],
+    },
+    {
+      title: "Monitoring",
+      items: [
+        { href: "/dashboard/admin/bookings", label: "Booking", icon: CalendarDays },
+        { href: "/dashboard/admin/invoices", label: "Invoice", icon: FileCheck },
+      ],
     },
   ],
 };

@@ -45,7 +45,7 @@ function tone(name: string) {
   return avatarTones[h % avatarTones.length];
 }
 
-export function BookingsTable({ rows }: { rows: Row[] }) {
+export function BookingsTable({ rows, hrefPrefix = "/dashboard/practitioner/bookings" }: { rows: Row[]; hrefPrefix?: string }) {
   if (rows.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-10 text-center">
@@ -68,7 +68,7 @@ export function BookingsTable({ rows }: { rows: Row[] }) {
         {rows.map((row) => (
           <li key={row.id}>
             <Link
-              href={`/dashboard/practitioner/bookings/${row.id}`}
+              href={`${hrefPrefix}/${row.id}`}
               className="grid grid-cols-1 gap-3 px-6 py-4 transition hover:bg-slate-50/80 lg:grid-cols-12 lg:items-center lg:gap-4"
             >
               <div className="col-span-4 flex items-center gap-3">
