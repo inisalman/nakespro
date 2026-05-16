@@ -275,15 +275,15 @@
 
 ## 10. Notifikasi
 
-- [ ] Buat model notifikasi.
+- [x] Buat model notifikasi.
 - [x] Buat helper create notification.
-- [ ] Notifikasi booking baru untuk nakes.
-- [ ] Notifikasi booking diterima untuk pasien.
-- [ ] Notifikasi booking ditolak untuk pasien.
-- [ ] Notifikasi invoice dibuat.
-- [ ] Notifikasi CPPT tersedia.
-- [ ] Buat halaman/list notifikasi pengguna.
-- [ ] Implementasi read/unread notification.
+- [x] Notifikasi booking baru untuk nakes.
+- [x] Notifikasi booking diterima untuk pasien.
+- [x] Notifikasi booking ditolak untuk pasien.
+- [x] Notifikasi invoice dibuat.
+- [x] Notifikasi CPPT tersedia.
+- [x] Buat halaman/list notifikasi pengguna.
+- [x] Implementasi read/unread notification.
 
 ## 11. File Upload dan Storage
 

@@ -28,6 +28,7 @@ const navByRole: Record<string, NavSection[]> = {
         { href: "/dashboard/patient/bookings", label: "Riwayat Booking", icon: CalendarDays },
         { href: "/dashboard/patient/invoices", label: "Invoice & CPPT", icon: FileText },
         { href: "/dashboard/patient/profile", label: "Profil", icon: Settings },
+        { href: "/dashboard/notifications", label: "Notifikasi", icon: Bell },
       ],
     },
   ],
@@ -52,6 +53,7 @@ const navByRole: Record<string, NavSection[]> = {
       items: [
         { href: "/dashboard/practitioner/earnings", label: "Pendapatan", icon: Wallet },
         { href: "/dashboard/practitioner/profile", label: "Profil", icon: Settings },
+        { href: "/dashboard/notifications", label: "Notifikasi", icon: Bell },
       ],
     },
   ],
@@ -74,6 +76,7 @@ const navByRole: Record<string, NavSection[]> = {
       items: [
         { href: "/dashboard/admin/bookings", label: "Booking", icon: CalendarDays },
         { href: "/dashboard/admin/invoices", label: "Invoice", icon: FileCheck },
+        { href: "/dashboard/notifications", label: "Notifikasi", icon: Bell },
       ],
     },
   ],
@@ -103,6 +106,7 @@ export async function DashboardShell({
   const user = await getCurrentUser();
   const sections = user ? navByRole[user.role] ?? [] : [];
   const displayName = user?.name ?? user?.email ?? "Pengguna";
+  const unreadNotifications = user ? await import("@/lib/prisma").then(({ prisma }) => prisma.notification.count({ where: { userId: user.id, readAt: null } })) : 0;
   const roleLabel =
     user?.role === UserRole.PRACTITIONER
       ? user.practitionerProfile?.profession ?? "Tenaga Kesehatan"
@@ -180,14 +184,14 @@ export async function DashboardShell({
                 className="h-10 w-full rounded-xl border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-teal-300 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-100"
               />
             </div>
-            <button
-              type="button"
+            <Link
+              href="/dashboard/notifications"
               aria-label="Notifikasi"
               className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
             >
               <Bell className="h-4 w-4" />
-              <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-white" />
-            </button>
+              {unreadNotifications > 0 ? <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-white" /> : null}
+            </Link>
             <span className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-xs font-bold text-white">
               {initials(displayName)}
             </span>

@@ -4,8 +4,7 @@ import {
   ClipboardList,
   FilePlus,
   FileText,
-  Plus,
-  Wallet,
+  Star,
 } from "lucide-react";
 import { BookingStatus, PaymentStatus, UserRole } from "@/generated/prisma/enums";
 import { DashboardShell } from "@/components/dashboard/dashboard-shell";
@@ -48,18 +47,18 @@ export default async function PractitionerDashboardPage() {
   const headerActions = (
     <>
       <Link
-        href="/dashboard/practitioner/cppt/new"
+        href="/dashboard/practitioner/cppt"
         className="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
       >
         <FilePlus className="h-4 w-4" />
         CPPT
       </Link>
       <Link
-        href="/dashboard/practitioner/bookings/new"
+        href="/dashboard/practitioner/bookings"
         className="inline-flex h-10 items-center gap-2 rounded-xl bg-teal-500 px-4 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(20,184,166,0.7)] transition hover:bg-teal-600"
       >
-        <Plus className="h-4 w-4" />
-        Tambah Booking
+        <CalendarDays className="h-4 w-4" />
+        Kelola Booking
       </Link>
     </>
   );
@@ -80,10 +79,13 @@ export default async function PractitionerDashboardPage() {
 
   const [
     todayBookingsCount,
+    pendingRequestsCount,
     pendingCpptCount,
     monthInvoiceCount,
     monthRevenueAgg,
+    reviewAgg,
     recentBookings,
+    pendingBookings,
     upcomingBookings,
   ] = await Promise.all([
     prisma.booking.count({
@@ -93,10 +95,11 @@ export default async function PractitionerDashboardPage() {
         status: { in: upcomingStatuses },
       },
     }),
+    prisma.booking.count({ where: { practitionerId, status: BookingStatus.PENDING } }),
     prisma.booking.count({
       where: {
         practitionerId,
-        status: BookingStatus.COMPLETED,
+        status: { in: [BookingStatus.IN_PROGRESS, BookingStatus.COMPLETED] },
         cppt: null,
       },
     }),
@@ -114,10 +117,24 @@ export default async function PractitionerDashboardPage() {
         paidAt: { gte: startOfMonth(today), lte: endOfMonth(today) },
       },
     }),
+    prisma.review.aggregate({
+      _avg: { rating: true },
+      _count: { rating: true },
+      where: { practitionerId },
+    }),
     prisma.booking.findMany({
       where: { practitionerId },
       orderBy: [{ bookingDate: "desc" }, { createdAt: "desc" }],
       take: 8,
+      include: {
+        patient: { include: { user: { select: { name: true } } } },
+        service: { select: { name: true, price: true } },
+      },
+    }),
+    prisma.booking.findMany({
+      where: { practitionerId, status: BookingStatus.PENDING },
+      orderBy: { createdAt: "desc" },
+      take: 5,
       include: {
         patient: { include: { user: { select: { name: true } } } },
         service: { select: { name: true, price: true } },
@@ -139,6 +156,7 @@ export default async function PractitionerDashboardPage() {
   ]);
 
   const monthRevenue = monthRevenueAgg._sum.total ?? 0;
+  const averageRating = reviewAgg._avg.rating ? reviewAgg._avg.rating.toFixed(1) : "-";
 
   const tableRows = recentBookings.map((b) => ({
     id: b.id,
@@ -159,6 +177,17 @@ export default async function PractitionerDashboardPage() {
     address: b.address,
   }));
 
+  const pendingRows = pendingBookings.map((b) => ({
+    id: b.id,
+    patientName: b.patient.user.name ?? "Pasien",
+    serviceName: b.service.name,
+    bookingDate: b.bookingDate,
+    bookingTime: b.bookingTime,
+    address: b.address,
+    price: b.service.price,
+    status: b.status,
+  }));
+
   return (
     <DashboardShell
       title="Dashboard Nakes"
@@ -171,29 +200,18 @@ export default async function PractitionerDashboardPage() {
         monthRevenue={monthRevenue}
       />
 
-      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard
-          icon={CalendarDays}
-          label="Pasien hari ini"
-          value={todayBookingsCount}
-          tone="teal"
-          trend={{ value: "12%", direction: "up" }}
-        />
+      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <StatCard icon={CalendarDays} label="Booking hari ini" value={todayBookingsCount} tone="teal" hint="Booking aktif hari ini." />
+        <StatCard icon={CalendarDays} label="Permintaan baru" value={pendingRequestsCount} tone="rose" hint="Menunggu konfirmasi." />
         <StatCard
           icon={ClipboardList}
-          label="Catatan belum diisi"
+          label="CPPT belum lengkap"
           value={pendingCpptCount}
           tone="amber"
           hint={pendingCpptCount > 0 ? "Selesaikan agar pasien melihat hasil." : "Semua tercatat."}
         />
-        <StatCard icon={FileText} label="Invoice bulan ini" value={monthInvoiceCount} tone="sky" />
-        <StatCard
-          icon={Wallet}
-          label="Pendapatan bulan ini"
-          value={formatCurrency(monthRevenue)}
-          tone="violet"
-          trend={{ value: "8%", direction: "up" }}
-        />
+        <StatCard icon={FileText} label="Invoice bulan ini" value={`${monthInvoiceCount} · ${formatCurrency(monthRevenue)}`} tone="sky" />
+        <StatCard icon={Star} label="Rating rata-rata" value={averageRating} tone="violet" hint={`${reviewAgg._count.rating} ulasan`} />
       </div>
 
       <div className="mt-8 grid gap-6 xl:grid-cols-3">
@@ -214,6 +232,13 @@ export default async function PractitionerDashboardPage() {
         </section>
 
         <aside className="space-y-6">
+          <section>
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="text-base font-bold text-slate-950">Permintaan baru</h2>
+              <Link href="/dashboard/practitioner/bookings" className="text-xs font-semibold text-teal-700 hover:text-teal-800">Lihat</Link>
+            </div>
+            <BookingsTable rows={pendingRows} />
+          </section>
           <section>
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-base font-bold text-slate-950">Jadwal mendatang</h2>

@@ -1,6 +1,8 @@
 import "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { UserRole } from "../src/generated/prisma/enums";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { hashPassword } from "../src/lib/auth/password";
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL,
@@ -42,6 +44,25 @@ const categories = [
 ];
 
 async function main() {
+  const adminPasswordHash = await hashPassword("adminsalman");
+
+  await prisma.user.upsert({
+    where: { email: "adminsalman@nakespro.local" },
+    update: {
+      name: "adminsalman",
+      passwordHash: adminPasswordHash,
+      role: UserRole.ADMIN,
+      isActive: true,
+    },
+    create: {
+      name: "adminsalman",
+      email: "adminsalman@nakespro.local",
+      passwordHash: adminPasswordHash,
+      role: UserRole.ADMIN,
+      isActive: true,
+    },
+  });
+
   for (const category of categories) {
     await prisma.serviceCategory.upsert({
       where: { slug: category.slug },

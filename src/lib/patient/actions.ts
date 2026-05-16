@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { Prisma } from "@/generated/prisma/client";
 import { BookingStatus, UserRole } from "@/generated/prisma/enums";
 import { requireRole } from "@/lib/auth/dal";
+import { createNotification } from "@/lib/notifications/create";
 import { prisma } from "@/lib/prisma";
 import { bookingSchema, patientProfileSchema, reviewSchema } from "@/lib/patient/schemas";
 
@@ -76,7 +77,7 @@ export async function createBooking(_state: PatientActionState, formData: FormDa
     return formErrors(parsed.error);
   }
 
-  const { patientId } = await requirePatientProfileId();
+  const { user, patientId } = await requirePatientProfileId();
   const service = await prisma.practitionerService.findFirst({
     where: {
       id: parsed.data.serviceId,
@@ -84,7 +85,7 @@ export async function createBooking(_state: PatientActionState, formData: FormDa
       isActive: true,
       practitioner: { isAvailable: true },
     },
-    select: { id: true, practitionerId: true },
+    select: { id: true, name: true, practitionerId: true, practitioner: { select: { userId: true, user: { select: { name: true } } } } },
   });
 
   if (!service) {
@@ -104,8 +105,17 @@ export async function createBooking(_state: PatientActionState, formData: FormDa
     select: { id: true },
   });
 
+  await createNotification({
+    userId: service.practitioner.userId,
+    title: "Booking baru",
+    message: `${user.name ?? user.email} mengajukan booking untuk ${service.name} pada ${parsed.data.bookingDate} pukul ${parsed.data.bookingTime}.`,
+    type: "BOOKING_CREATED",
+  });
+
   revalidatePath("/dashboard/patient");
   revalidatePath("/dashboard/patient/bookings");
+  revalidatePath("/dashboard/practitioner");
+  revalidatePath("/dashboard/practitioner/bookings");
   redirect(`/bookings/success?bookingId=${booking.id}`);
 }
 
