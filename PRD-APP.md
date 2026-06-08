@@ -352,15 +352,25 @@ nakespro-app/
 
 ## 8. Alur Kunci
 
-### 8.1 Registrasi Nakes Baru
+### 8.1 Registrasi Nakes Baru (Self-Service)
 
 ```
-1. Nakes buka nakespro.id → lihat paket Template → klik "Daftar"
-2. Landing page redirect ke halaman registrasi (atau langsung ke app)
-3. Nakes login dengan Google → akun dibuat otomatis
-4. Pilih subdomain (budi.nakespro.id) → cek ketersediaan
-5. Isi profil: nama, spesialisasi, nomor WA, jam praktik
-6. Website langsung live di subdomain
+1. Nakes buka nakespro.id → lihat paket Template → klik "Daftar Sekarang"
+2. Login dengan Google → akun otomatis dibuat
+3. Pilih template desain (2-3 pilihan tema warna/layout)
+4. Pilih subdomain: [nama].nakespro.id → cek ketersediaan real-time
+5. Isi profil homecare:
+   - Nama homecare/praktik (misal: "LukaCare by Budi")
+   - Upload logo (opsional, bisa skip dulu)
+   - Tagline / deskripsi singkat
+6. Isi konten per section (self-service, form-based):
+   - Hero: headline, foto utama (upload)
+   - Tentang: deskripsi panjang, foto nakes
+   - Layanan: list layanan + deskripsi tiap layanan
+   - Galeri: upload 3-10 foto praktik/alat/ruangan
+   - Kontak: nomor WA, jam praktik, lokasi, embed Google Maps
+7. Pembayaran via Midtrans (Rp20.000/bulan pertama)
+8. Website langsung live di subdomain
 ```
 
 ### 8.2 Pasien Booking
@@ -420,13 +430,42 @@ nakespro-app/
 
 ---
 
-## 10. Pertanyaan Terbuka
+## 10. Keputusan (Final)
 
-1. **Registrasi self-service atau manual?** — Nakes daftar sendiri via Google login, atau lu daftarin manual per nakes?
-2. **Free trial?** — 7-14 hari gratis sebelum mulai bayar?
-3. **Pembayaran otomatis?** — Perlu payment gateway (Midtrans/Xendit) atau transfer manual dulu?
-4. **WhatsApp notifikasi otomatis?** — Fase 1 cukup redirect URL template (gratis), atau langsung WA Business API (berbayar ~Rp500/bln)?
-5. **Domain wildcard SSL?** — Let's Encrypt wildcard butuh DNS challenge. Cloudflare API bisa automasi ini.
+| # | Pertanyaan | Keputusan | Detail |
+|---|---|---|---|
+| 1 | Registrasi | **Self-service** | Nakes daftar sendiri: Google login → pilih template → isi nama homecare, upload logo, foto per section — semua mandiri |
+| 2 | Free trial | **Tidak ada** | Langsung bayar Rp20rb/bulan via Midtrans |
+| 3 | Pembayaran | **Midtrans** | Payment gateway otomatis, recurring billing |
+| 4 | Notifikasi WA | **Redirect URL template** | Pasien booking → redirect ke WA nakes dengan pesan template otomatis. Gratis, tidak perlu WA Business API. Level B (WA API) di Fase 2B |
+| 5 | Wildcard SSL | **Cloudflare** | `*.nakespro.id` A record di Cloudflare (DNS only saat provisioning), Easypanel request wildcard cert via Let's Encrypt DNS challenge. Setelah cert jadi, bisa balik orange cloud |
+
+### Notifikasi WA: Cara Kerja (Level A — Redirect URL Template)
+
+```
+1. Pasien isi form booking di budi.nakespro.id/booking
+2. Data booking disimpan ke DB (tenantId = "budi")
+3. Pasien di-redirect ke URL WhatsApp:
+   https://wa.me/628568461024?text=Halo Pak Budi, saya [nama] ingin booking...
+4. Nakes menerima pesan template di WhatsApp-nya
+5. Nakes balas langsung di WA — semua komunikasi lanjutan di WA
+```
+
+**Kenapa Level A:**
+- Tidak perlu bayar WA Business API (~Rp200-500rb/bln)
+- Tidak perlu approval Meta/Facebook
+- Nakes tetap dapat notifikasi instan
+- Komunikasi lanjutan natural via chat WA
+- Upgrade ke Level B (WA API otomatis) bisa dilakukan kapan saja di Fase 2B
+
+### Cloudflare Wildcard SSL: Cara Setting
+
+1. Di Cloudflare DNS → tambah A record `*.nakespro.id` → IP VPS `96.9.231.66` → **DNS only (gray cloud)**
+2. Di Easypanel → service `askep_nakespro-app` → tambah domain `*.nakespro.id`
+3. Easypanel auto-request wildcard cert via Let's Encrypt (butuh Cloudflare API token di Easypanel)
+4. Setelah cert jadi → opsional balik ke orange cloud (proxied) untuk CDN/DDoS
+
+Alternatif simpel: kalau Cloudflare SSL mode **Full (Strict)**, Cloudflare bisa serve wildcard SSL sendiri. Cukup A record `*.nakespro.id` orange cloud → selesai.
 
 ---
 
