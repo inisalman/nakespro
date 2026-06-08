@@ -1,6 +1,6 @@
 import { Stethoscope, Heart, Activity, Baby, Home, Syringe } from "lucide-react";
 
-export const WHATSAPP_NUMBER = "6281234567890"; // TODO: ganti dengan nomor asli
+export const WHATSAPP_NUMBER = "628568461024";
 
 export const services = [
   { icon: Stethoscope, title: "Perawat Luka", desc: "Website profil untuk praktik perawatan luka mandiri." },
