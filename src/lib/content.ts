@@ -12,36 +12,36 @@ export const services = [
 ];
 
 export const steps = [
-  { num: "01", title: "Konsultasi", desc: "Ceritakan kebutuhan dan layanan kesehatan Anda. Gratis, tanpa komitmen." },
-  { num: "02", title: "Desain", desc: "Kami rancang website sesuai branding dan kebutuhan praktik Anda." },
-  { num: "03", title: "Revisi", desc: "Tinjau dan beri masukan hingga hasilnya sesuai keinginan." },
-  { num: "04", title: "Launch", desc: "Website Anda online dan siap menerima pasien baru." },
+  { num: "01", title: "Daftar", desc: "2 menit. Pilih template, isi data basic, verifikasi via WhatsApp. Selesai." },
+  { num: "02", title: "Bayar", desc: "20 ribu/bulan atau sekali bayar. QRIS instant, langsung diproses." },
+  { num: "03", title: "Live", desc: "Dalam 1-3 hari website Anda sudah online dan siap terima pasien." },
+  { num: "04", title: "Support", desc: "Ada yang perlu diubah? Tinggal chat kami via WhatsApp." },
 ];
 
 export const plans = [
   {
-    name: "Template",
-    tagline: "Website siap pakai untuk nakes",
+    name: "Website Template",
+    tagline: "Cepat, hemat, siap pakai. Paling cocok untuk mayoritas nakes.",
     price: "Rp20.000",
     period: "/bulan",
-    highlight: false,
+    highlight: true,
     features: [
-      "Website otomatis dari template profesional",
-      "Subdomain nama.nakespro.id",
-      "Profil layanan & informasi praktik",
-      "Halaman kontak & booking sederhana",
+      "Website jadi dalam 1-3 hari (kami yang urus)",
+      "Domain sudah included (nama.nakespro.id)",
+      "Hosting & server sudah included — tanpa bayar terpisah",
+      "Booking online & profil layanan lengkap",
       "Responsif di semua perangkat",
-      "Cocok untuk nakes yang ingin cepat & hemat",
+      "Support gratis via WhatsApp",
     ],
-    cta: "Daftar Template",
-    note: "Segera hadir",
+    cta: "Daftar Sekarang",
+    note: "Rekomendasi",
   },
   {
-    name: "Custom",
-    tagline: "Website branded sesuai kebutuhan",
+    name: "Website Custom",
+    tagline: "Desain sesuai branding Anda. Untuk nakes yang punya budget lebih.",
     price: "Rp2.000.000",
     period: "/sekali bayar",
-    highlight: true,
+    highlight: false,
     features: [
       "Desain custom sesuai branding Anda",
       "Domain sendiri (namaanda.com)",
@@ -51,7 +51,7 @@ export const plans = [
       "Pendampingan penuh dari tim kami",
     ],
     cta: "Konsultasi via WhatsApp",
-    note: "Paling populer",
+    note: "Untuk yang mau unik",
   },
 ];
 
@@ -63,9 +63,10 @@ export const portfolio = [
 ];
 
 export const faqs = [
-  { q: "Berapa lama pengerjaan website custom?", a: "Umumnya 1-2 minggu tergantung kompleksitas fitur, dihitung sejak konsultasi dan materi lengkap diterima." },
-  { q: "Apakah saya perlu beli domain sendiri?", a: "Untuk paket Custom, Anda bisa pakai domain sendiri. Untuk paket Template, Anda otomatis dapat subdomain nama.nakespro.id." },
-  { q: "Apa beda paket Template dan Custom?", a: "Template adalah website siap pakai yang otomatis dibuat dari desain standar (langganan bulanan). Custom adalah website yang dirancang khusus sesuai branding dan kebutuhan Anda (sekali bayar)." },
-  { q: "Apakah website bisa menerima booking pasien?", a: "Ya. Paket Custom mendukung booking online dan manajemen pasien. Paket Template menyediakan booking sederhana." },
-  { q: "Bagaimana cara memulai?", a: "Klik tombol konsultasi WhatsApp atau isi form di bawah. Tim kami akan menghubungi Anda untuk diskusi gratis." },
+  { q: "Berapa biaya tersembunyi?", a: "Tidak ada. Hanya Rp20.000/bulan. Domain dan hosting sudah included, tidak ada biaya lain." },
+  { q: "Berapa lama sampai website live?", a: "1-3 hari setelah pembayaran. Kami yang urus server dan teknisnya. Anda tinggal upload foto dan data praktik." },
+  { q: "Apakah saya perlu beli domain atau server sendiri?", a: "Tidak. Paket Template sudah termasuk subdomain (nama.nakespro.id), hosting, dan server. Kalau mau domain sendiri (namaanda.com), pakai paket Custom." },
+  { q: "Gimana kalau website perlu diubah?", a: "Tinggal chat kami via WhatsApp. Perubahan kecil seperti foto, jam praktik, dan deskripsi gratis. Perubahan besar seperti desain atau fitur ada biaya tergantung kompleksitas." },
+  { q: "Apakah website bisa menerima booking pasien?", a: "Ya. Paket Template dan Custom keduanya mendukung booking online. Pasien bisa request janji langsung dari website Anda." },
+  { q: "Bagaimana cara memulai?", a: "Klik \"Daftar Sekarang\" atau isi form di bawah. Tim kami akan menghubungi Anda dalam 1x24 jam untuk konfirmasi." },
 ];

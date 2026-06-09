@@ -15,7 +15,7 @@ import {
 
 export default function Home() {
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    "Halo NakesPro.id, saya ingin konsultasi pembuatan website."
+    "Halo NakesPro.id, saya ingin tanya soal website untuk nakes."
   )}`;
 
   return (
@@ -68,27 +68,34 @@ export default function Home() {
               {/* Eyebrow badge */}
               <div className="fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal-tint px-4 py-1.5 text-xs font-semibold tracking-wide text-teal-strong">
                 <Sparkles className="h-3.5 w-3.5" />
-                Untuk Tenaga Kesehatan Mandiri
+                Untuk Nakes yang Sibuk Melayani, Bukan Mikir Teknis
               </div>
 
               {/* Headline */}
               <h1 className="fade-up text-4xl font-bold leading-[1.08] tracking-tight text-ink md:text-5xl lg:text-6xl">
-                Solusi{" "}
+                Website Profesional{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-teal">Digital</span>
+                  <span className="relative z-10 text-teal">Cukup 20 Ribu</span>
                   <span className="absolute -bottom-1 left-0 right-0 z-0 h-2 rounded-full bg-teal/15" />
                 </span>{" "}
-                untuk Praktik Kesehatan Anda
+                <br className="hidden sm:block" />
+                per Bulan
               </h1>
+
+              {/* Subheadline */}
+              <p
+                className="fade-up mx-auto mt-4 max-w-xl text-lg font-medium text-ink md:text-xl lg:mx-0"
+                style={{ animationDelay: "0.1s" }}
+              >
+                Tanpa Bayar Domain, Tanpa Bayar Server
+              </p>
 
               {/* Subtitle */}
               <p
-                className="fade-up mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-body md:text-lg lg:mx-0"
+                className="fade-up mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-body md:text-lg lg:mx-0"
                 style={{ animationDelay: "0.15s" }}
               >
-                Tingkatkan kepercayaan pasien dan jangkau lebih banyak orang
-                dengan website profesional yang dirancang khusus untuk tenaga
-                kesehatan mandiri.
+                Kami handle semua teknis. Anda tinggal upload foto, atur jam praktik, terima pasien baru. Website live dalam hitungan hari.
               </p>
 
               {/* CTAs */}
@@ -96,12 +103,12 @@ export default function Home() {
                 className="fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
                 style={{ animationDelay: "0.3s" }}
               >
-                <Button href={waLink} variant="primary" size="lg">
+                <Button href="#order" variant="primary" size="lg">
                   <MessageCircle className="h-5 w-5" />
-                  Konsultasi Gratis
+                  Daftar Sekarang
                 </Button>
                 <Button href="#harga" variant="outline" size="lg">
-                  Lihat Paket
+                  Lihat Paket Lain
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
@@ -111,7 +118,7 @@ export default function Home() {
                 className="fade-up mt-8 text-xs text-text-muted"
                 style={{ animationDelay: "0.45s" }}
               >
-                Konsultasi pertama gratis tanpa komitmen
+                Banyak nakes sudah pakai. Rating 4.8/5 dari pengguna.
               </p>
             </div>
 
@@ -137,10 +144,10 @@ export default function Home() {
       {/* ──────── Layanan ──────── */}
       <Section id="layanan" bg="white">
         <SectionHeading
-          eyebrow="Layanan"
-          title="Dibuat untuk berbagai praktik kesehatan"
+          eyebrow="Untuk Siapa?"
+          title="Website siap untuk berbagai praktik kesehatan"
           titleAccent="praktik kesehatan"
-          subtitle="Apapun bidang Anda, kami bantu hadirkan kehadiran digital yang profesional dan terpercaya."
+          subtitle="Apapun bidang Anda, template kami sudah siap. Tinggal isi data, foto, dan jadwal. Selesai."
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
@@ -166,10 +173,10 @@ export default function Home() {
       {/* ──────── Cara Kerja ──────── */}
       <Section id="cara-kerja" bg="paper">
         <SectionHeading
-          eyebrow="Proses"
-          title="Empat langkah menuju website Anda"
-          titleAccent="empat langkah"
-          subtitle="Proses sederhana dan transparan, dari konsultasi hingga website online."
+          eyebrow="Dari Daftar hingga Live"
+          title="Hanya 4 langkah, selesai dalam 1-3 hari"
+          titleAccent="1-3 hari"
+          subtitle="Daftar hari ini, website live minggu ini. Kami yang urus teknisnya."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
@@ -195,9 +202,9 @@ export default function Home() {
       <Section id="harga" bg="white">
         <SectionHeading
           eyebrow="Paket Harga"
-          title="Pilih paket yang sesuai dengan kebutuhan"
-          titleAccent="sesuai dengan kebutuhan"
-          subtitle="Mulai dari yang hemat dan otomatis, hingga website custom yang sepenuhnya sesuai keinginan Anda."
+          title="Pilih paket yang sesuai dengan budget"
+          titleAccent="sesuai dengan budget"
+          subtitle="Mulai dari Rp20.000/bulan dengan semua fitur included. Atau custom dengan harga sekali bayar."
         />
         <div className="grid gap-6 md:grid-cols-2">
           {plans.map((plan) => {
@@ -242,7 +249,7 @@ export default function Home() {
                 </ul>
                 <div className="mt-8">
                   <Button
-                    href={isHighlighted ? waLink : "#order"}
+                    href={isHighlighted ? "#order" : waLink}
                     variant={isHighlighted ? "secondary" : "outline"}
                     className="w-full"
                   >
@@ -319,12 +326,12 @@ export default function Home() {
                 Mulai Sekarang
               </p>
               <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-text-on-dark md:text-4xl">
-                Siap punya <br />
-                <span className="text-teal">website sendiri?</span>
+                Sudah siap? <br />
+                <span className="text-teal">Daftar dalam 2 menit</span>
               </h2>
               <p className="mt-4 max-w-md text-base leading-relaxed text-text-on-dark/60">
-                Isi form di samping atau langsung chat WhatsApp kami. Konsultasi
-                pertama gratis, tanpa komitmen.
+                Isi form di samping atau langsung chat WhatsApp kami. Bayar dan
+                website Anda bisa langsung jadi dalam 1-3 hari.
               </p>
               <div className="mt-8">
                 <Button href={waLink} variant="secondary" size="lg">

@@ -9,7 +9,7 @@ export function OrderForm() {
     nama: "",
     kontak: "",
     jenis: "",
-    paket: "Custom",
+    paket: "Template",
     pesan: "",
   });
 
@@ -75,8 +75,8 @@ export function OrderForm() {
             onChange={(e) => setForm({ ...form, paket: e.target.value })}
             className={inputClass}
           >
-            <option value="Custom">Custom (Rp2.000.000)</option>
             <option value="Template">Template (Rp20.000/bulan)</option>
+            <option value="Custom">Custom (Rp2.000.000)</option>
             <option value="Belum tahu">Masih bingung, mau konsultasi</option>
           </select>
         </div>

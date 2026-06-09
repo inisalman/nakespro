@@ -9,9 +9,9 @@ const jakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "NakesPro.id — Solusi Digital untuk Tenaga Kesehatan",
+  title: "NakesPro.id — Website Profesional Nakes Mulai Rp20.000/bulan",
   description:
-    "Kami membuat website profesional untuk praktisi kesehatan mandiri (perawat, bidan, fisioterapis, home care). Custom design, responsif, booking online, dan invoice management included.",
+    "Website profesional untuk tenaga kesehatan mandiri mulai Rp20.000/bulan. Tanpa repot domain dan server — semua sudah included. Live dalam 1-3 hari, tinggal upload foto dan data praktik.",
   metadataBase: new URL("https://nakespro.id"),
 };
 
