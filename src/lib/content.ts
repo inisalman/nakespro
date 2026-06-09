@@ -13,18 +13,26 @@ export const services = [
 
 export const steps = [
   { num: "01", title: "Daftar", desc: "2 menit. Pilih template, isi data basic, verifikasi via WhatsApp. Selesai." },
-  { num: "02", title: "Bayar", desc: "20 ribu/bulan atau sekali bayar. QRIS instant, langsung diproses." },
+  { num: "02", title: "Bayar", desc: "Mulai Rp25.000/bulan atau tahunan. QRIS instant, langsung diproses." },
   { num: "03", title: "Live", desc: "Dalam 1-3 hari website Anda sudah online dan siap terima pasien." },
   { num: "04", title: "Support", desc: "Ada yang perlu diubah? Tinggal chat kami via WhatsApp." },
 ];
 
 export const plans = [
   {
-    name: "Website Template",
+    name: "Paket Hemat",
     tagline: "Cepat, hemat, siap pakai. Paling cocok untuk mayoritas nakes.",
-    price: "Rp20.000",
-    period: "/bulan",
     highlight: true,
+    monthly: {
+      price: "Rp39.000",
+      period: "/bulan",
+      note: "Ditagih bulanan",
+    },
+    yearly: {
+      price: "Rp25.000",
+      period: "/bulan",
+      note: "Ditagih Rp300.000/tahun",
+    },
     features: [
       "Website jadi dalam 1-3 hari (kami yang urus)",
       "Domain sudah included (nama.nakespro.id)",
@@ -34,14 +42,23 @@ export const plans = [
       "Support gratis via WhatsApp",
     ],
     cta: "Daftar Sekarang",
-    note: "Rekomendasi",
+    ctaTarget: "#order",
+    badge: "Rekomendasi",
   },
   {
-    name: "Website Custom",
+    name: "Paket Advance",
     tagline: "Desain sesuai branding Anda. Untuk nakes yang punya budget lebih.",
-    price: "Rp2.000.000",
-    period: "/sekali bayar",
     highlight: false,
+    monthly: {
+      price: "Rp200.000",
+      period: "/bulan",
+      note: "Ditagih bulanan",
+    },
+    yearly: {
+      price: "Rp166.000",
+      period: "/bulan",
+      note: "Ditagih Rp2.000.000/tahun",
+    },
     features: [
       "Desain custom sesuai branding Anda",
       "Domain sendiri (namaanda.com)",
@@ -51,9 +68,42 @@ export const plans = [
       "Pendampingan penuh dari tim kami",
     ],
     cta: "Konsultasi via WhatsApp",
-    note: "Untuk yang mau unik",
+    ctaTarget: "wa",
+    badge: null,
+  },
+  {
+    name: "Paket Enterprise",
+    tagline: "Untuk klinik, jaringan praktik, atau kebutuhan skala besar.",
+    highlight: false,
+    enterprise: true,
+    monthly: {
+      price: "Custom",
+      period: "",
+      note: "Sesuai kebutuhan",
+    },
+    yearly: {
+      price: "Custom",
+      period: "",
+      note: "Sesuai kebutuhan",
+    },
+    features: [
+      "Multi-website atau multi-cabang",
+      "Integrasi sistem internal & rekam medis",
+      "Dashboard manajemen terpusat",
+      "Dukungan teknis prioritas",
+      "SLA & keamanan tingkat enterprise",
+      "Konsultasi langsung dengan tim kami",
+    ],
+    cta: "Diskusi via WhatsApp",
+    ctaTarget: "wa",
+    badge: null,
   },
 ];
+
+export const billingOptions = {
+  monthly: { label: "Bulanan", saving: null },
+  yearly: { label: "Tahunan", saving: "Hemat hingga 36%" },
+};
 
 export const portfolio = [
   { name: "Klinik Luka Sehat", category: "Perawat Luka", color: "from-teal/20 to-teal/5" },
@@ -63,7 +113,7 @@ export const portfolio = [
 ];
 
 export const faqs = [
-  { q: "Berapa biaya tersembunyi?", a: "Tidak ada. Hanya Rp20.000/bulan. Domain dan hosting sudah included, tidak ada biaya lain." },
+  { q: "Berapa biaya tersembunyi?", a: "Tidak ada. Mulai Rp25.000/bulan (tagihan tahunan). Domain dan hosting sudah included, tidak ada biaya lain." },
   { q: "Berapa lama sampai website live?", a: "1-3 hari setelah pembayaran. Kami yang urus server dan teknisnya. Anda tinggal upload foto dan data praktik." },
   { q: "Apakah saya perlu beli domain atau server sendiri?", a: "Tidak. Paket Template sudah termasuk subdomain (nama.nakespro.id), hosting, dan server. Kalau mau domain sendiri (namaanda.com), pakai paket Custom." },
   { q: "Gimana kalau website perlu diubah?", a: "Tinggal chat kami via WhatsApp. Perubahan kecil seperti foto, jam praktik, dan deskripsi gratis. Perubahan besar seperti desain atau fitur ada biaya tergantung kompleksitas." },

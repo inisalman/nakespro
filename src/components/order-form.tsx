@@ -75,8 +75,9 @@ export function OrderForm() {
             onChange={(e) => setForm({ ...form, paket: e.target.value })}
             className={inputClass}
           >
-            <option value="Template">Template (Rp20.000/bulan)</option>
-            <option value="Custom">Custom (Rp2.000.000)</option>
+            <option value="Paket Hemat">Paket Hemat (mulai Rp25.000/bulan)</option>
+            <option value="Paket Advance">Paket Advance (mulai Rp166.000/bulan)</option>
+            <option value="Paket Enterprise">Paket Enterprise (custom pricing)</option>
             <option value="Belum tahu">Masih bingung, mau konsultasi</option>
           </select>
         </div>

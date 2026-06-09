@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { Check, ArrowRight, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
 import { Button } from "@/components/button";
 import { FaqList } from "@/components/faq-list";
 import { OrderForm } from "@/components/order-form";
 import { HeroMockup } from "@/components/hero-mockup";
+import { PricingSection } from "@/components/pricing-section";
 import {
   services,
   steps,
-  plans,
   portfolio,
   WHATSAPP_NUMBER,
 } from "@/lib/content";
@@ -75,7 +75,7 @@ export default function Home() {
               <h1 className="fade-up text-4xl font-bold leading-[1.08] tracking-tight text-ink md:text-5xl lg:text-6xl">
                 Website Profesional{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-teal">Cukup 20 Ribu</span>
+                  <span className="relative z-10 text-teal">Mulai 25 Ribu</span>
                   <span className="absolute -bottom-1 left-0 right-0 z-0 h-2 rounded-full bg-teal/15" />
                 </span>{" "}
                 <br className="hidden sm:block" />
@@ -204,62 +204,9 @@ export default function Home() {
           eyebrow="Paket Harga"
           title="Pilih paket yang sesuai dengan budget"
           titleAccent="sesuai dengan budget"
-          subtitle="Mulai dari Rp20.000/bulan dengan semua fitur included. Atau custom dengan harga sekali bayar."
+          subtitle="Mulai Rp25.000/bulan dengan domain, hosting, dan support sudah included. Hemat lebih banyak dengan tagihan tahunan."
         />
-        <div className="grid gap-6 md:grid-cols-2">
-          {plans.map((plan) => {
-            const isHighlighted = plan.highlight;
-            return (
-              <div
-                key={plan.name}
-                className={`relative overflow-hidden rounded-2xl border p-8 transition-all hover:shadow-card ${
-                  isHighlighted
-                    ? "border-teal/40 bg-white shadow-card"
-                    : "border-line bg-white"
-                }`}
-              >
-                {plan.note && (
-                  <span
-                    className={`absolute right-6 top-0 -translate-y-1/2 rounded-full px-3.5 py-1 text-xs font-semibold ${
-                      isHighlighted
-                        ? "bg-teal text-white"
-                        : "border border-line bg-paper text-text-muted"
-                    }`}
-                  >
-                    {plan.note}
-                  </span>
-                )}
-                <h3 className="text-xl font-bold text-ink">{plan.name}</h3>
-                <p className="mt-0.5 text-sm text-text-body">
-                  {plan.tagline}
-                </p>
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="text-3xl font-bold tracking-tight text-ink">
-                    {plan.price}
-                  </span>
-                  <span className="text-sm text-text-muted">{plan.period}</span>
-                </div>
-                <ul className="mt-8 space-y-3">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-4.5 w-4.5 flex-shrink-0 text-teal" />
-                      <span className="text-sm text-text-body">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8">
-                  <Button
-                    href={isHighlighted ? "#order" : waLink}
-                    variant={isHighlighted ? "secondary" : "outline"}
-                    className="w-full"
-                  >
-                    {plan.cta}
-                  </Button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <PricingSection />
       </Section>
 
       {/* ──────── Portofolio ──────── */}
