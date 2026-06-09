@@ -9,11 +9,12 @@ export function Section({
   children: React.ReactNode;
   className?: string;
   id?: string;
-  bg?: "cream" | "white" | "soft" | "dark" | "tint";
+  bg?: "cream" | "white" | "paper" | "soft" | "dark" | "tint";
 }) {
   const bgMap = {
     cream: "bg-cream",
     white: "bg-white",
+    paper: "bg-paper",
     soft: "bg-bg-soft",
     dark: "bg-cta-dark",
     tint: "bg-bg-tint",
@@ -39,7 +40,7 @@ export function SectionLabel({
   return (
     <p
       className={cn(
-        "mb-4 inline-flex items-center gap-1.5 rounded-pill bg-teal/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal",
+        "mb-4 inline-flex items-center gap-1.5 rounded-full border border-teal/20 bg-teal-tint px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-teal-strong",
         className
       )}
     >
@@ -64,10 +65,9 @@ export function SectionHeading({
   className?: string;
   dark?: boolean;
 }) {
-  const titleColor = dark ? "text-text-on-dark" : "text-text-heading";
-  const subColor = dark ? "text-text-on-dark/70" : "text-text-body";
+  const titleColor = dark ? "text-text-on-dark" : "text-ink";
+  const subColor = dark ? "text-text-on-dark/60" : "text-text-body";
 
-  // Render title with optional italic accent word
   function renderTitle() {
     if (!titleAccent) return title;
     const parts = title.split(titleAccent);
@@ -75,7 +75,10 @@ export function SectionHeading({
     return (
       <>
         {parts[0]}
-        <span className="italic font-semibold">{titleAccent}</span>
+        <span className="relative">
+          <span className="relative z-10 text-teal">{titleAccent}</span>
+          <span className="absolute -bottom-0.5 left-0 right-0 z-0 h-1.5 rounded-full bg-teal/15" />
+        </span>
         {parts[1]}
       </>
     );
@@ -84,11 +87,18 @@ export function SectionHeading({
   return (
     <div className={cn("mb-12 max-w-2xl", className)}>
       {eyebrow && <SectionLabel>{eyebrow}</SectionLabel>}
-      <h2 className={"text-3xl font-bold md:text-4xl " + titleColor}>
+      <h2
+        className={
+          "text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl " +
+          titleColor
+        }
+      >
         {renderTitle()}
       </h2>
       {subtitle && (
-        <p className={"mt-4 text-lg leading-relaxed " + subColor}>{subtitle}</p>
+        <p className={"mt-4 text-base leading-relaxed " + subColor}>
+          {subtitle}
+        </p>
       )}
     </div>
   );

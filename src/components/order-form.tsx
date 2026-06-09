@@ -27,15 +27,15 @@ export function OrderForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20";
+    "w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink outline-none transition-all placeholder:text-text-muted/60 focus:border-teal focus:bg-white focus:ring-2 focus:ring-teal/15";
+
+  const labelClass = "mb-1.5 block text-xs font-semibold text-text-body";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700">
-            Nama
-          </label>
+          <label className={labelClass}>Nama</label>
           <input
             required
             type="text"
@@ -46,9 +46,7 @@ export function OrderForm() {
           />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700">
-            WhatsApp / Email
-          </label>
+          <label className={labelClass}>WhatsApp / Email</label>
           <input
             required
             type="text"
@@ -61,9 +59,7 @@ export function OrderForm() {
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700">
-            Jenis Praktik
-          </label>
+          <label className={labelClass}>Jenis Praktik</label>
           <input
             type="text"
             value={form.jenis}
@@ -73,9 +69,7 @@ export function OrderForm() {
           />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700">
-            Paket Diminati
-          </label>
+          <label className={labelClass}>Paket Diminati</label>
           <select
             value={form.paket}
             onChange={(e) => setForm({ ...form, paket: e.target.value })}
@@ -88,9 +82,7 @@ export function OrderForm() {
         </div>
       </div>
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-slate-700">
-          Pesan
-        </label>
+        <label className={labelClass}>Pesan</label>
         <textarea
           value={form.pesan}
           onChange={(e) => setForm({ ...form, pesan: e.target.value })}
@@ -101,7 +93,7 @@ export function OrderForm() {
       </div>
       <button
         type="submit"
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal px-6 py-3.5 font-semibold text-white transition-all hover:bg-teal/90 md:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-ink-soft md:w-auto"
       >
         <Send className="h-4 w-4" />
         Kirim via WhatsApp

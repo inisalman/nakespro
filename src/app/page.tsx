@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { Check, ArrowRight, MessageCircle } from "lucide-react";
+import { Check, ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
 import { Button } from "@/components/button";
 import { FaqList } from "@/components/faq-list";
 import { OrderForm } from "@/components/order-form";
+import { HeroMockup } from "@/components/hero-mockup";
 import {
   services,
   steps,
@@ -18,114 +19,152 @@ export default function Home() {
   )}`;
 
   return (
-    <main>
-      {/* Nav */}
-      <nav className="sticky top-0 z-50 border-b border-slate-100 bg-cream/80 backdrop-blur">
+    <main className="grain relative">
+      {/* ──────── Nav ──────── */}
+      <nav className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-lg">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <span className="text-xl font-bold text-text-heading">
-            Nakes<span className="text-teal">Pro</span>.id
-          </span>
-          <div className="hidden items-center gap-8 md:flex">
-            <Link
-              href="#layanan"
-              className="text-sm font-medium text-text-body hover:text-teal"
-            >
-              Layanan
-            </Link>
-            <Link
-              href="#cara-kerja"
-              className="text-sm font-medium text-text-body hover:text-teal"
-            >
-              Cara Kerja
-            </Link>
-            <Link
-              href="#harga"
-              className="text-sm font-medium text-text-body hover:text-teal"
-            >
-              Harga
-            </Link>
-            <Link
-              href="#portofolio"
-              className="text-sm font-medium text-text-body hover:text-teal"
-            >
-              Portofolio
-            </Link>
-            <Button
-              href="#order"
-              variant="primary"
-              size="sm"
-            >
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 text-lg font-bold tracking-tight text-ink"
+          >
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-teal text-xs font-bold text-white">
+              N
+            </span>
+            Nakes<span className="text-teal">Pro</span>
+            <span className="text-sm font-medium text-text-muted">.id</span>
+          </Link>
+
+          {/* Nav links */}
+          <div className="hidden items-center gap-1 md:flex">
+            {[
+              { href: "#layanan", label: "Layanan" },
+              { href: "#cara-kerja", label: "Cara Kerja" },
+              { href: "#harga", label: "Harga" },
+              { href: "#portofolio", label: "Portofolio" },
+              { href: "#faq", label: "FAQ" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-full px-4 py-2 text-sm font-medium text-text-body transition-colors hover:bg-paper hover:text-ink"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Button href="#order" variant="primary" size="sm" className="ml-4">
               Mulai Sekarang
             </Button>
           </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden px-6 py-24 md:py-32">
+      {/* ──────── Hero ──────── */}
+      <section className="relative overflow-hidden px-6 pt-16 pb-12 md:pt-24 md:pb-20">
         <div className="mx-auto max-w-6xl">
-          <div className="max-w-3xl">
-            <p className="mb-4 inline-flex items-center gap-1.5 rounded-pill bg-teal/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal" />
-              Untuk Tenaga Kesehatan Mandiri
-            </p>
-            <h1 className="text-4xl font-bold leading-tight text-text-heading md:text-6xl">
-              Website Profesional untuk{" "}
-              <span className="italic font-semibold text-teal">
-                Praktik Kesehatan
-              </span>{" "}
-              Anda
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-text-body md:text-xl">
-              Tingkatkan kepercayaan pasien dan jangkau lebih banyak orang
-              dengan website yang dirancang khusus untuk perawat, bidan,
-              fisioterapis, dan praktisi kesehatan mandiri.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href={waLink} variant="primary" size="lg">
-                <MessageCircle className="h-5 w-5" />
-                Konsultasi Gratis
-              </Button>
-              <Button href="#harga" variant="outline" size="lg">
-                Lihat Paket
-                <ArrowRight className="h-4 w-4" />
-              </Button>
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-10">
+            {/* ── Left: copy ── */}
+            <div className="text-center lg:text-left">
+              {/* Eyebrow badge */}
+              <div className="fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal-tint px-4 py-1.5 text-xs font-semibold tracking-wide text-teal-strong">
+                <Sparkles className="h-3.5 w-3.5" />
+                Untuk Tenaga Kesehatan Mandiri
+              </div>
+
+              {/* Headline */}
+              <h1 className="fade-up text-4xl font-bold leading-[1.08] tracking-tight text-ink md:text-5xl lg:text-6xl">
+                Solusi{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10 text-teal">Digital</span>
+                  <span className="absolute -bottom-1 left-0 right-0 z-0 h-2 rounded-full bg-teal/15" />
+                </span>{" "}
+                untuk Praktik Kesehatan Anda
+              </h1>
+
+              {/* Subtitle */}
+              <p
+                className="fade-up mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-body md:text-lg lg:mx-0"
+                style={{ animationDelay: "0.15s" }}
+              >
+                Tingkatkan kepercayaan pasien dan jangkau lebih banyak orang
+                dengan website profesional yang dirancang khusus untuk tenaga
+                kesehatan mandiri.
+              </p>
+
+              {/* CTAs */}
+              <div
+                className="fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
+                style={{ animationDelay: "0.3s" }}
+              >
+                <Button href={waLink} variant="primary" size="lg">
+                  <MessageCircle className="h-5 w-5" />
+                  Konsultasi Gratis
+                </Button>
+                <Button href="#harga" variant="outline" size="lg">
+                  Lihat Paket
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
+
+              {/* Trust indicator */}
+              <p
+                className="fade-up mt-8 text-xs text-text-muted"
+                style={{ animationDelay: "0.45s" }}
+              >
+                Konsultasi pertama gratis tanpa komitmen
+              </p>
+            </div>
+
+            {/* ── Right: laptop mockup ── */}
+            <div className="fade-up" style={{ animationDelay: "0.4s" }}>
+              <HeroMockup />
             </div>
           </div>
         </div>
-        {/* Blob decor */}
-        <div className="pointer-events-none absolute -right-20 top-10 h-72 w-72 rounded-full bg-teal/5 blur-3xl" />
-        <div className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-bg-tint blur-3xl" />
+
+        {/* Subtle radial gradient blobs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-teal/4 blur-3xl" />
+          <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-teal/3 blur-3xl" />
+        </div>
       </section>
 
-      {/* Layanan */}
+      {/* ──────── Dotted Divider ──────── */}
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="dotted-divider w-full" />
+      </div>
+
+      {/* ──────── Layanan ──────── */}
       <Section id="layanan" bg="white">
         <SectionHeading
-          eyebrow="Layanan Kami"
+          eyebrow="Layanan"
           title="Dibuat untuk berbagai praktik kesehatan"
           titleAccent="praktik kesehatan"
           subtitle="Apapun bidang Anda, kami bantu hadirkan kehadiran digital yang profesional dan terpercaya."
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((s, i) => (
             <div
               key={s.title}
-              className="rounded-xl border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:border-teal/20 hover:shadow-md"
+              className="group rounded-2xl border border-line bg-white p-6 transition-all hover:border-teal/20 hover:shadow-card"
+              style={{ animationDelay: `${i * 0.05}s` }}
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10">
-                <s.icon className="h-6 w-6 text-teal" />
+              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-teal-tint transition-all group-hover:bg-teal/10">
+                <s.icon className="h-5.5 w-5.5 text-teal-strong" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-text-heading">
+              <h3 className="mb-1.5 text-base font-semibold text-ink">
                 {s.title}
               </h3>
-              <p className="text-text-body">{s.desc}</p>
+              <p className="text-sm leading-relaxed text-text-body">
+                {s.desc}
+              </p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Cara Kerja */}
-      <Section id="cara-kerja" bg="soft">
+      {/* ──────── Cara Kerja ──────── */}
+      <Section id="cara-kerja" bg="paper">
         <SectionHeading
           eyebrow="Proses"
           title="Empat langkah menuju website Anda"
@@ -136,27 +175,29 @@ export default function Home() {
           {steps.map((step) => (
             <div
               key={step.num}
-              className="rounded-xl border border-slate-100 bg-white p-6 shadow-sm"
+              className="relative rounded-2xl border border-line bg-white p-6"
             >
-              <div className="mb-3 text-4xl font-bold text-teal/20">
+              <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-sm font-bold text-white">
                 {step.num}
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-text-heading">
+              </span>
+              <h3 className="mb-1.5 text-base font-semibold text-ink">
                 {step.title}
               </h3>
-              <p className="text-sm text-text-body">{step.desc}</p>
+              <p className="text-sm leading-relaxed text-text-body">
+                {step.desc}
+              </p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Harga */}
+      {/* ──────── Harga ──────── */}
       <Section id="harga" bg="white">
         <SectionHeading
           eyebrow="Paket Harga"
           title="Pilih paket yang sesuai dengan kebutuhan"
-          titleAccent="paket"
-          subtitle="Mulai dari yang hemat dan otomatis, hingga website custom yang sepenuhnya sesuai kebutuhan Anda."
+          titleAccent="sesuai dengan kebutuhan"
+          subtitle="Mulai dari yang hemat dan otomatis, hingga website custom yang sepenuhnya sesuai keinginan Anda."
         />
         <div className="grid gap-6 md:grid-cols-2">
           {plans.map((plan) => {
@@ -164,38 +205,38 @@ export default function Home() {
             return (
               <div
                 key={plan.name}
-                className={`relative overflow-hidden rounded-2xl p-8 ${
+                className={`relative overflow-hidden rounded-2xl border p-8 transition-all hover:shadow-card ${
                   isHighlighted
-                    ? "border-2 border-teal bg-teal/5 shadow-lg"
-                    : "border border-slate-100 bg-white shadow-sm"
+                    ? "border-teal/40 bg-white shadow-card"
+                    : "border-line bg-white"
                 }`}
               >
                 {plan.note && (
                   <span
-                    className={`absolute left-8 top-0 -translate-y-1/2 rounded-pill px-3 py-1 text-xs font-semibold shadow-sm ${
+                    className={`absolute right-6 top-0 -translate-y-1/2 rounded-full px-3.5 py-1 text-xs font-semibold ${
                       isHighlighted
                         ? "bg-teal text-white"
-                        : "bg-slate-200 text-slate-600"
+                        : "border border-line bg-paper text-text-muted"
                     }`}
                   >
                     {plan.note}
                   </span>
                 )}
-                <h3 className="text-2xl font-bold text-text-heading">
-                  {plan.name}
-                </h3>
-                <p className="mt-1 text-text-body">{plan.tagline}</p>
+                <h3 className="text-xl font-bold text-ink">{plan.name}</h3>
+                <p className="mt-0.5 text-sm text-text-body">
+                  {plan.tagline}
+                </p>
                 <div className="mt-6 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-text-heading">
+                  <span className="text-3xl font-bold tracking-tight text-ink">
                     {plan.price}
                   </span>
-                  <span className="text-text-muted">{plan.period}</span>
+                  <span className="text-sm text-text-muted">{plan.period}</span>
                 </div>
                 <ul className="mt-8 space-y-3">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal" />
-                      <span className="text-text-body">{f}</span>
+                      <Check className="mt-0.5 h-4.5 w-4.5 flex-shrink-0 text-teal" />
+                      <span className="text-sm text-text-body">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -214,44 +255,39 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Portofolio */}
-      <Section id="portofolio" bg="soft">
+      {/* ──────── Portofolio ──────── */}
+      <Section id="portofolio" bg="paper">
         <SectionHeading
           eyebrow="Portofolio"
           title="Beberapa karya kami"
           titleAccent="karya kami"
           subtitle="Contoh website yang kami buat untuk para tenaga kesehatan."
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {portfolio.map((item) => (
             <div
               key={item.name}
-              className="group overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm transition-shadow hover:shadow-md"
+              className="group overflow-hidden rounded-2xl border border-line bg-white transition-all hover:shadow-card"
             >
-              <div
-                className={`aspect-[4/3] bg-gradient-to-br ${item.color} flex items-center justify-center`}
-              >
-                <span className="text-sm font-medium text-text-muted">
-                  Pratinjau
-                </span>
+              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-teal/10 to-teal/5">
+                <div className="flex h-full items-center justify-center">
+                  <div className="rounded-xl border border-line bg-white/80 px-4 py-2 text-xs font-medium text-text-muted backdrop-blur-sm">
+                    Pratinjau
+                  </div>
+                </div>
               </div>
               <div className="p-5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-teal">
+                <p className="text-xs font-semibold uppercase tracking-wider text-teal-strong">
                   {item.category}
                 </p>
-                <h3 className="mt-1 font-semibold text-text-heading">
-                  {item.name}
-                </h3>
+                <h3 className="mt-1 font-semibold text-ink">{item.name}</h3>
               </div>
             </div>
           ))}
         </div>
-        <p className="mt-6 text-sm text-text-muted">
-          * Portofolio contoh. Akan diperbarui dengan proyek nyata.
-        </p>
       </Section>
 
-      {/* FAQ */}
+      {/* ──────── FAQ ──────── */}
       <Section id="faq" bg="white">
         <SectionHeading
           eyebrow="FAQ"
@@ -261,15 +297,32 @@ export default function Home() {
         <FaqList />
       </Section>
 
-      {/* Order / Kontak */}
-      <Section id="order" bg="dark">
-        <div className="rounded-2xl bg-cta-dark p-8 md:p-12">
-          <div className="grid gap-10 lg:grid-cols-2">
+      {/* ──────── Order / CTA ──────── */}
+      <Section id="order" bg="white">
+        <div className="relative overflow-hidden rounded-3xl bg-ink p-8 md:p-14">
+          {/* Subtle grain overlay for depth */}
+          <div className="pointer-events-none absolute inset-0 opacity-[0.035]">
+            <div
+              className="h-full w-full"
+              style={{
+                backgroundImage:
+                  "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)",
+                backgroundSize: "20px 20px",
+              }}
+            />
+          </div>
+
+          <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
-              <h2 className="text-3xl font-bold text-text-on-dark md:text-4xl">
-                Siap punya website sendiri?
+              <p className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-text-on-dark/70">
+                <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+                Mulai Sekarang
+              </p>
+              <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-text-on-dark md:text-4xl">
+                Siap punya <br />
+                <span className="text-teal">website sendiri?</span>
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-text-on-dark/70">
+              <p className="mt-4 max-w-md text-base leading-relaxed text-text-on-dark/60">
                 Isi form di samping atau langsung chat WhatsApp kami. Konsultasi
                 pertama gratis, tanpa komitmen.
               </p>
@@ -280,22 +333,29 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="rounded-2xl bg-cream p-6 md:p-8">
+            <div className="rounded-2xl border border-white/10 bg-white p-6 md:p-8">
               <OrderForm />
             </div>
           </div>
         </div>
       </Section>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-100 bg-white px-6 py-12">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
-          <span className="text-lg font-bold text-text-heading">
-            Nakes<span className="text-teal">Pro</span>.id
-          </span>
+      {/* ──────── Footer ──────── */}
+      <footer className="border-t border-line bg-white px-6 py-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 text-base font-bold tracking-tight text-ink"
+          >
+            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-teal text-[10px] font-bold text-white">
+              N
+            </span>
+            Nakes<span className="text-teal">Pro</span>
+            <span className="text-xs font-medium text-text-muted">.id</span>
+          </Link>
           <p className="text-sm text-text-muted">
-            © {new Date().getFullYear()} NakesPro.id — Jasa pembuatan website
-            tenaga kesehatan.
+            &copy; {new Date().getFullYear()} NakesPro.id — Jasa pembuatan
+            website tenaga kesehatan.
           </p>
         </div>
       </footer>

@@ -1,43 +1,115 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* === Brand === */
-  --color-teal: #14B8A6;
-  --color-teal-strong: #0D9488;
-  --color-teal-light: #CCFBF1;
+  /* === Brand — emerald/teal accent === */
+  --color-teal: #16B68A;
+  --color-teal-strong: #0F8F6C;
+  --color-teal-light: #DCF5EB;
+  --color-teal-tint: #F1FAF6;
 
-  /* === CTA Dark === */
-  --color-cta-dark: #1A2E2A;
-  --color-cta-dark-hover: #243B36;
+  /* === Ink (near-black headline) === */
+  --color-ink: #0F1717;
+  --color-ink-soft: #1B2424;
+
+  /* === CTA Dark (legacy alias) === */
+  --color-cta-dark: #0F1717;
+  --color-cta-dark-hover: #1B2424;
 
   /* === Backgrounds === */
-  --color-cream: #FAF7F2;
-  --color-bg-soft: #F5F9F8;
-  --color-bg-tint: #E8F5F2;
+  --color-cream: #FFFFFF;
+  --color-paper: #F8F8F5;
+  --color-bg-soft: #F4F5F2;
+  --color-bg-tint: #EFF6F2;
+
+  /* === Borders / Lines === */
+  --color-line: #ECECE6;
+  --color-line-strong: #DCDCD4;
 
   /* === Text === */
-  --color-text-heading: #1A2E2A;
-  --color-text-body: #5A6562;
+  --color-text-heading: #0F1717;
+  --color-text-body: #525C5A;
   --color-text-muted: #8A9492;
-  --color-text-on-dark: #F4F6F3;
+  --color-text-on-dark: #F1F4F0;
 
   /* === Radius === */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
   --radius-pill: 999px;
 
   /* === Shadows === */
-  --shadow-sm: 0 1px 2px rgba(26, 46, 42, 0.04);
-  --shadow-md: 0 8px 24px rgba(26, 46, 42, 0.06);
-  --shadow-lg: 0 16px 40px rgba(26, 46, 42, 0.08);
-}
+  --shadow-sm: 0 1px 2px rgba(15, 23, 23, 0.04);
+  --shadow-md: 0 8px 28px rgba(15, 23, 23, 0.06);
+  --shadow-lg: 0 24px 60px rgba(15, 23, 23, 0.08);
+  --shadow-card: 0 1px 0 rgba(15, 23, 23, 0.04), 0 4px 20px rgba(15, 23, 23, 0.04);
+  --shadow-hero: 0 2px 4px rgba(15, 23, 23, 0.04), 0 24px 48px -12px rgba(15, 23, 23, 0.18);
+  --shadow-hero-float: 0 12px 32px -8px rgba(15, 23, 23, 0.10);
 
-* {
-  @apply transition-colors duration-200;
+  /* === Typography === */
+  --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.035em;
+}
+
+/* Subtle staggered fade-in for hero content */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Marquee for trust strip */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+/* Hero noise/grain texture (very subtle) */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15, 23, 23, 0.035) 1px, transparent 1px);
+  background-size: 18px 18px;
+  pointer-events: none;
+  opacity: 0.5;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
+}
+
+/* Soft dotted divider */
+.dotted-divider {
+  background-image: radial-gradient(circle, var(--color-line-strong) 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-position: center;
+  background-repeat: repeat-x;
+  height: 8px;
 }

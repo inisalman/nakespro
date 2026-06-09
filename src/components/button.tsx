@@ -12,13 +12,13 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    "bg-cta-dark text-text-on-dark hover:bg-cta-dark-hover shadow-sm hover:shadow-md",
+    "bg-ink text-white hover:bg-ink-soft shadow-sm",
   secondary:
-    "bg-teal text-white hover:bg-teal-strong shadow-sm hover:shadow-md",
+    "bg-teal text-white hover:bg-teal-strong shadow-sm",
   outline:
-    "border-1.5 border-teal text-teal hover:bg-teal-light bg-transparent",
+    "border border-line-strong text-ink hover:bg-paper",
   ghost:
-    "text-text-body hover:text-teal hover:bg-bg-soft",
+    "text-text-body hover:text-ink hover:bg-paper",
 };
 
 const sizes = {
@@ -36,7 +36,7 @@ export function Button({
   type = "button",
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-pill font-semibold transition-all",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all",
     variants[variant],
     sizes[size],
     className
