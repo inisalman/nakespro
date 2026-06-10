@@ -42,7 +42,7 @@ export const plans = [
       "Support gratis via WhatsApp",
     ],
     cta: "Daftar Sekarang",
-    ctaTarget: "#order",
+    ctaTarget: "https://app.nakespro.id/register?package=hemat",
     badge: "Rekomendasi",
   },
   {
