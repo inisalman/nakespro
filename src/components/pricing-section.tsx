@@ -77,8 +77,19 @@ export function PricingSection() {
 
               {/* Price block — fades on billing switch */}
               <div key={billing} className="fade-up mt-6">
+                {billing === "yearly" && plan.monthly.price !== "Custom" && (
+                  <div className="mb-1">
+                    <span className="text-lg font-semibold tracking-tight text-text-muted line-through">
+                      {plan.monthly.price}
+                    </span>
+                  </div>
+                )}
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-4xl font-bold tracking-tight text-ink">
+                  <span className={`text-4xl font-bold tracking-tight ${
+                    billing === "yearly" && plan.monthly.price !== "Custom"
+                      ? "text-teal-strong"
+                      : "text-ink"
+                  }`}>
                     {priceInfo.price}
                   </span>
                   {priceInfo.period && (
