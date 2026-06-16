@@ -44,7 +44,7 @@ export function PricingSection() {
         </div>
         <span className="inline-flex items-center gap-1.5 text-xs font-medium text-teal-strong">
           <span className="h-1.5 w-1.5 rounded-full bg-teal" />
-          Bayar tahunan, hemat hingga 36%
+          Bayar tahunan, hemat hingga 49%
         </span>
       </div>
 
@@ -77,7 +77,7 @@ export function PricingSection() {
 
               {/* Price block — fades on billing switch */}
               <div key={billing} className="fade-up mt-6">
-                {billing === "yearly" && plan.monthly.price !== "Custom" && (
+                {billing === "yearly" && plan.monthly.price !== "Custom" && plan.monthly.price !== "-" && (
                   <div className="mb-1">
                     <span className="text-lg font-semibold tracking-tight text-text-muted line-through">
                       {plan.monthly.price}
@@ -86,7 +86,7 @@ export function PricingSection() {
                 )}
                 <div className="flex items-baseline gap-1.5">
                   <span className={`text-4xl font-bold tracking-tight ${
-                    billing === "yearly" && plan.monthly.price !== "Custom"
+                    billing === "yearly" && plan.monthly.price !== "Custom" && plan.monthly.price !== "-"
                       ? "text-teal-strong"
                       : "text-ink"
                   }`}>
