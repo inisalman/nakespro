@@ -204,7 +204,7 @@ export default function Home() {
           eyebrow="Paket Harga"
           title="Pilih paket yang sesuai dengan budget"
           titleAccent="sesuai dengan budget"
-          subtitle="Mulai Rp25.000/bulan dengan domain, hosting, dan support sudah included. Hemat lebih banyak dengan tagihan tahunan."
+          subtitle="Mulai Rp25.000/bulan — domain, hosting, dan support sudah included. Pilih tagihan tahunan untuk hemat lebih banyak."
         />
         <PricingSection />
       </Section>
