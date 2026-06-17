@@ -96,24 +96,21 @@ export default function Home() {
               {/* Subheadline */}
               <p
                 className="fade-up mx-auto mt-4 max-w-xl text-lg font-medium text-ink md:text-xl lg:mx-0"
-                style= animationDelay: "0.1s" 
-              >
+                style={{ animationDelay: "0.1s" }} >
                 Tanpa Bayar Domain, Tanpa Bayar Server
               </p>
 
               {/* Subtitle */}
               <p
                 className="fade-up mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-body md:text-lg lg:mx-0"
-                style= animationDelay: "0.15s" 
-              >
+                style={{ animationDelay: "0.15s" }} >
                 Kami handle semua teknis. Anda tinggal upload foto, atur jam praktik, terima pasien baru. Website live dalam hitungan hari.
               </p>
 
               {/* CTAs */}
               <div
                 className="fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
-                style= animationDelay: "0.3s" 
-              >
+                style={{ animationDelay: "0.3s" }} >
                 <Button href="#order" variant="primary" size="lg">
                   <MessageCircle className="h-5 w-5" />
                   Daftar Sekarang
@@ -127,14 +124,13 @@ export default function Home() {
               {/* Trust indicator */}
               <p
                 className="fade-up mt-8 text-xs text-text-muted"
-                style= animationDelay: "0.45s" 
-              >
+                style={{ animationDelay: "0.45s" }} >
                 Banyak nakes sudah pakai. Rating 4.8/5 dari pengguna.
               </p>
             </div>
 
             {/* ── Right: laptop mockup ── */}
-            <div className="fade-up" style= animationDelay: "0.4s" >
+            <div className="fade-up" style={{ animationDelay: "0.4s" }} >
               <HeroMockup />
             </div>
           </div>
@@ -275,12 +271,11 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 opacity-[0.035]">
             <div
               className="h-full w-full"
-              style=
+              style={{
                 backgroundImage:
                   "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)",
                 backgroundSize: "20px 20px",
-              
-            />
+              }}/>
           </div>
 
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
