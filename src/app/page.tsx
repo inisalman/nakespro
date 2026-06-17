@@ -6,6 +6,7 @@ import { FaqList } from "@/components/faq-list";
 import { OrderForm } from "@/components/order-form";
 import { HeroMockup } from "@/components/hero-mockup";
 import { PricingSection } from "@/components/pricing-section";
+import { TypingWords } from "@/components/typing-words";
 import {
   services,
   steps,
@@ -14,7 +15,7 @@ import {
 } from "@/lib/content";
 
 export default function Home() {
-  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  const waLink = `{{https://wa.me/${WHATSAPP_NUMBER}}}?text=${encodeURIComponent(
     "Halo NakesPro.id, saya ingin tanya soal website untuk nakes."
   )}`;
 
@@ -73,19 +74,29 @@ export default function Home() {
 
               {/* Headline */}
               <h1 className="fade-up text-4xl font-bold leading-[1.08] tracking-tight text-ink md:text-5xl lg:text-6xl">
-                Website Profesional{" "}
+                Website untuk{" "}
+                <TypingWords
+                  words={[
+                    "Nakes",
+                    "Homecare",
+                    "Bidan",
+                    "Perawat Sunat",
+                    "Fisioterapi",
+                  ]}
+                />
+                <br className="hidden sm:block" />
+                mulai dari{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-teal">Mulai 25 Ribu</span>
+                  <span className="relative z-10 text-teal">25 Ribu</span>
                   <span className="absolute -bottom-1 left-0 right-0 z-0 h-2 rounded-full bg-teal/15" />
                 </span>{" "}
-                <br className="hidden sm:block" />
                 per Bulan
               </h1>
 
               {/* Subheadline */}
               <p
                 className="fade-up mx-auto mt-4 max-w-xl text-lg font-medium text-ink md:text-xl lg:mx-0"
-                style={{ animationDelay: "0.1s" }}
+                style= animationDelay: "0.1s" 
               >
                 Tanpa Bayar Domain, Tanpa Bayar Server
               </p>
@@ -93,7 +104,7 @@ export default function Home() {
               {/* Subtitle */}
               <p
                 className="fade-up mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-body md:text-lg lg:mx-0"
-                style={{ animationDelay: "0.15s" }}
+                style= animationDelay: "0.15s" 
               >
                 Kami handle semua teknis. Anda tinggal upload foto, atur jam praktik, terima pasien baru. Website live dalam hitungan hari.
               </p>
@@ -101,7 +112,7 @@ export default function Home() {
               {/* CTAs */}
               <div
                 className="fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
-                style={{ animationDelay: "0.3s" }}
+                style= animationDelay: "0.3s" 
               >
                 <Button href="#order" variant="primary" size="lg">
                   <MessageCircle className="h-5 w-5" />
@@ -116,14 +127,14 @@ export default function Home() {
               {/* Trust indicator */}
               <p
                 className="fade-up mt-8 text-xs text-text-muted"
-                style={{ animationDelay: "0.45s" }}
+                style= animationDelay: "0.45s" 
               >
                 Banyak nakes sudah pakai. Rating 4.8/5 dari pengguna.
               </p>
             </div>
 
             {/* ── Right: laptop mockup ── */}
-            <div className="fade-up" style={{ animationDelay: "0.4s" }}>
+            <div className="fade-up" style= animationDelay: "0.4s" >
               <HeroMockup />
             </div>
           </div>
@@ -258,11 +269,11 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 opacity-[0.035]">
             <div
               className="h-full w-full"
-              style={{
+              style=
                 backgroundImage:
                   "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)",
                 backgroundSize: "20px 20px",
-              }}
+              
             />
           </div>
 
