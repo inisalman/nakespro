@@ -220,34 +220,40 @@ export default function Home() {
         <PricingSection />
       </Section>
 
-      {/* ──────── Portofolio ──────── */}
+      {/* ──────── Portofolio / Template Preview ──────── */}
       <Section id="portofolio" bg="paper">
         <SectionHeading
-          eyebrow="Portofolio"
-          title="Beberapa karya kami"
-          titleAccent="karya kami"
-          subtitle="Contoh website yang kami buat untuk para tenaga kesehatan."
+          eyebrow="Template"
+          title="Pilihan template siap pakai"
+          titleAccent="siap pakai"
+          subtitle="Klik untuk melihat demo langsung. Semua template responsif dan bisa disesuaikan."
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {portfolio.map((item) => (
-            <div
-              key={item.name}
-              className="group overflow-hidden rounded-2xl border border-line bg-white transition-all hover:shadow-card"
+            <a
+              key={item.id}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group overflow-hidden rounded-2xl border border-line bg-white transition-all hover:border-teal/30 hover:shadow-card"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-teal/10 to-teal/5">
-                <div className="flex h-full items-center justify-center">
-                  <div className="rounded-xl border border-line bg-white/80 px-4 py-2 text-xs font-medium text-text-muted backdrop-blur-sm">
-                    Pratinjau
-                  </div>
-                </div>
+              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+                <iframe
+                  src={item.url}
+                  title={`Pratinjau ${item.name}`}
+                  className="absolute inset-0 w-full h-full pointer-events-none border-0"
+                  sandbox="allow-scripts allow-same-origin"
+                  style={{ transform: "scale(0.35)", transformOrigin: "top left", width: "285%", height: "285%" }}
+                />
               </div>
               <div className="p-5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-teal-strong">
                   {item.category}
                 </p>
                 <h3 className="mt-1 font-semibold text-ink">{item.name}</h3>
+                <p className="mt-0.5 text-xs text-text-muted">{item.character}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </Section>

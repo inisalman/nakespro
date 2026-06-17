@@ -111,10 +111,42 @@ export const billingOptions = {
 };
 
 export const portfolio = [
-  { name: "Klinik Luka Sehat", category: "Perawat Luka", color: "from-teal/20 to-teal/5" },
-  { name: "Bidan Sari Praktik", category: "Bidan Mandiri", color: "from-sky-blue/20 to-sky-blue/5" },
-  { name: "FisioCare Studio", category: "Fisioterapi", color: "from-sage/20 to-sage/5" },
-  { name: "HomeCare Nusantara", category: "Home Care", color: "from-peach/30 to-peach/5" },
+  {
+    id: "modern-light",
+    name: "Modern Light",
+    category: "Perawat Luka",
+    character: "Bersih, terang, profesional",
+    description: "Cocok untuk praktik mandiri, klinik kecil",
+    url: "https://modernlight.nakespro.id/",
+    accentColor: "teal",
+  },
+  {
+    id: "clean-medical",
+    name: "Clean Medical",
+    category: "Fisioterapi",
+    character: "Klinis, rapi, tepercaya",
+    description: "Cocok untuk fisioterapi, rehabilitasi, klinik medis",
+    url: "https://cleanmedical.nakespro.id/",
+    accentColor: "cyan",
+  },
+  {
+    id: "friendly-care",
+    name: "Friendly Care",
+    category: "Bidan & Anak",
+    character: "Ceria, hangat, ramah keluarga",
+    description: "Cocok untuk bidan, perawatan ibu & anak, laktasi",
+    url: "https://friendlycare.nakespro.id/",
+    accentColor: "purple",
+  },
+  {
+    id: "calm-warm",
+    name: "Calm & Warm",
+    category: "Home Care",
+    character: "Hangat, lembut, menenangkan",
+    description: "Cocok untuk perawatan lansia, mental health, home nursing",
+    url: "https://calmwarm.nakespro.id/",
+    accentColor: "amber",
+  },
 ];
 
 export const faqs = [
