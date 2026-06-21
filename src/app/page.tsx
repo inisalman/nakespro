@@ -5,6 +5,7 @@ import { Button } from "@/components/button";
 import { FaqList } from "@/components/faq-list";
 import { OrderForm } from "@/components/order-form";
 import { HeroMockup } from "@/components/hero-mockup";
+import { Logo } from "@/components/logo";
 import { PricingSection } from "@/components/pricing-section";
 import { TypingWords } from "@/components/typing-words";
 import {
@@ -25,16 +26,7 @@ export default function Home() {
       <nav className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-lg">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 text-lg font-bold tracking-tight text-ink"
-          >
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-teal text-xs font-bold text-white">
-              N
-            </span>
-            Nakes<span className="text-teal">Pro</span>
-            <span className="text-sm font-medium text-text-muted">.id</span>
-          </Link>
+          <Logo height={32} priority />
 
           {/* Nav links */}
           <div className="hidden items-center gap-1 md:flex">
@@ -309,16 +301,7 @@ export default function Home() {
       {/* ──────── Footer ──────── */}
       <footer className="border-t border-line bg-white px-6 py-12">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 text-base font-bold tracking-tight text-ink"
-          >
-            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-teal text-[10px] font-bold text-white">
-              N
-            </span>
-            Nakes<span className="text-teal">Pro</span>
-            <span className="text-xs font-medium text-text-muted">.id</span>
-          </Link>
+          <Logo height={28} />
           <p className="text-sm text-text-muted">
             &copy; {new Date().getFullYear()} NakesPro.id — Jasa pembuatan
             website tenaga kesehatan.
