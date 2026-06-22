@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     "Website profesional untuk tenaga kesehatan mandiri mulai Rp25.000/bulan. Tanpa repot domain dan server — semua sudah included. Live dalam 1-3 hari, tinggal upload foto dan data praktik.",
   metadataBase: new URL("https://nakespro.id"),
   icons: {
-    icon: [{ url: "/nakespro-logo.webp", sizes: "any" }],
-    apple: [{ url: "/nakespro-logo.webp" }],
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "any" }],
+    apple: [{ url: "/favicon.png", type: "image/png" }],
   },
 };
 
