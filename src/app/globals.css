@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* === Brand — emerald/teal accent === */
-  --color-teal: #16B68A;
-  --color-teal-strong: #0F8F6C;
-  --color-teal-light: #DCF5EB;
-  --color-teal-tint: #F1FAF6;
+  /* === Brand — blue accent === */
+  --color-teal: #3F72AF;
+  --color-teal-strong: #2C5685;
+  --color-teal-light: #DBE2EF;
+  --color-teal-tint: #EEF3FA;
 
   /* === Ink (near-black headline) === */
   --color-ink: #0F1717;
@@ -19,7 +19,7 @@
   --color-cream: #FFFFFF;
   --color-paper: #F8F8F5;
   --color-bg-soft: #F4F5F2;
-  --color-bg-tint: #EFF6F2;
+  --color-bg-tint: #EFF4FA;
 
   /* === Borders / Lines === */
   --color-line: #ECECE6;
