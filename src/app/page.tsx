@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MessageCircle, Sparkles } from "lucide-react";
+import { Star, MessageCircle, Sparkles } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
 import { Button } from "@/components/button";
 import { FaqList } from "@/components/faq-list";
@@ -7,6 +7,7 @@ import { OrderForm } from "@/components/order-form";
 import { Logo } from "@/components/logo";
 import { PricingSection } from "@/components/pricing-section";
 import { TypingWords } from "@/components/typing-words";
+import { HeroMockup } from "@/components/hero-mockup";
 import {
   services,
   steps,
@@ -52,76 +53,93 @@ export default function Home() {
       </nav>
 
       {/* ──────── Hero ──────── */}
-      <section className="relative overflow-hidden px-6 pt-16 pb-12 md:pt-24 md:pb-20">
+      <section className="relative overflow-hidden px-6 pt-16 pb-16 md:pt-24 md:pb-20 lg:pb-24">
         <div className="mx-auto max-w-6xl">
-          <div className="flex items-center justify-center">
-            {/* ── Copy: center ── */}
-            <div className="text-center">
-              {/* Eyebrow badge */}
-              <div className="fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal-tint px-4 py-1.5 text-xs font-semibold tracking-wide text-teal-strong">
-                <Sparkles className="h-3.5 w-3.5" />
-                Untuk Nakes yang Sibuk Melayani, Bukan Mikir Teknis
-              </div>
-
-              {/* Headline */}
-              <h1 className="fade-up text-4xl font-bold leading-[1.08] tracking-tight text-ink md:text-5xl lg:text-6xl">
-                Website untuk{" "}
-                <TypingWords
-                  words={[
-                    "Nakes",
-                    "Homecare",
-                    "Bidan",
-                    "Perawat Sunat",
-                    "Fisioterapi",
-                  ]}
-                />
-                <br className="hidden sm:block" />
-                mulai dari{" "}
-                <span className="relative inline-block">
-                  <span className="relative z-10 text-teal">25 Ribu</span>
-                  <span className="absolute -bottom-1 left-0 right-0 z-0 h-2 rounded-full bg-teal/15" />
-                </span>{" "}
-                per Bulan
-              </h1>
-
-              {/* Subheadline */}
-              <p
-                className="fade-up mx-auto mt-4 max-w-xl text-lg font-medium text-ink md:text-xl"
-                style={{ animationDelay: "0.1s" }} >
-                Tanpa Bayar Domain, Tanpa Bayar Server
-              </p>
-
-              {/* Subtitle */}
-              <p
-                className="fade-up mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-body md:text-lg"
-                style={{ animationDelay: "0.15s" }} >
-                Kami handle semua teknis. Anda tinggal upload foto, atur jam praktik, terima pasien baru. Website live dalam hitungan hari.
-              </p>
-
-              {/* CTAs */}
-              <div
-                className="fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
-                style={{ animationDelay: "0.3s" }} >
-                <Button href="#harga" variant="secondary" size="lg">
-                  Lihat Paket
-                </Button>
-              </div>
-
-              {/* Trust indicator */}
-              <p
-                className="fade-up mt-8 text-xs text-text-muted"
-                style={{ animationDelay: "0.45s" }} >
-                Banyak nakes sudah pakai. Rating 4.8/5 dari pengguna.
-              </p>
+          {/* ── Text content: center ── */}
+          <div className="mx-auto max-w-3xl text-center">
+            {/* Eyebrow badge */}
+            <div className="fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal-tint px-4 py-1.5 text-xs font-semibold tracking-wide text-teal-strong">
+              <Sparkles className="h-3.5 w-3.5" />
+              Untuk Nakes yang Sibuk Melayani, Bukan Mikir Teknis
             </div>
 
+            {/* Headline */}
+            <h1 className="fade-up text-4xl font-bold leading-[1.08] tracking-tight text-ink md:text-5xl lg:text-6xl">
+              Website untuk{" "}
+              <TypingWords
+                words={[
+                  "Nakes",
+                  "Homecare",
+                  "Bidan",
+                  "Perawat Sunat",
+                  "Fisioterapi",
+                ]}
+              />
+              <br className="hidden sm:block" />
+              mulai dari{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-teal">25 Ribu</span>
+                <span className="absolute -bottom-1 left-0 right-0 z-0 h-2 rounded-full bg-teal/15" />
+              </span>{" "}
+              per Bulan
+            </h1>
+
+            {/* Description */}
+            <p
+              className="fade-up mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-body md:text-lg"
+              style={{ animationDelay: "0.15s" }} >
+              Tanpa Bayar Domain, Tanpa Bayar Server. Kami handle semua teknis. Anda tinggal
+              upload foto, atur jam praktik, terima pasien baru. Website live dalam hitungan hari.
+            </p>
+
+            {/* Dual CTAs */}
+            <div
+              className="fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+              style={{ animationDelay: "0.3s" }} >
+              <Button href="#harga" variant="secondary" size="lg">
+                Lihat Paket & Harga
+              </Button>
+              <Button href={waLink} variant="outline" size="lg">
+                <MessageCircle className="h-5 w-5" />
+                Konsultasi Gratis
+              </Button>
+            </div>
+
+            {/* Trust indicator */}
+            <p
+              className="fade-up mt-6 text-sm text-text-muted"
+              style={{ animationDelay: "0.45s" }} >
+              <span className="inline-flex items-center gap-1">
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                <span className="ml-1.5 font-semibold text-ink">4.8</span>
+                <span className="ml-0.5">dari 200+ nakes sudah pakai</span>
+              </span>
+            </p>
+          </div>
+
+          {/* ── Visual mockup below ── */}
+          <div
+            className="fade-up -mx-2 mt-14 md:mt-18"
+            style={{ animationDelay: "0.6s" }} >
+            <div className="relative">
+              {/* Subtle shadow behind mockup */}
+              <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-b from-teal/[0.03] via-teal/[0.01] to-transparent blur-2xl" />
+              <HeroMockup />
+            </div>
           </div>
         </div>
 
-        {/* Subtle radial gradient blobs */}
+        {/* Background decorative elements */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-teal/4 blur-3xl" />
           <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-teal/3 blur-3xl" />
+          <div className="absolute left-1/2 top-0 -translate-x-1/2">
+            <div className="h-[600px] w-[800px] rounded-[100%] bg-gradient-to-b from-teal/[0.015] to-transparent blur-3xl" />
+          </div>
         </div>
       </section>
 
