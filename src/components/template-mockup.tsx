@@ -6,17 +6,6 @@
  * Non-interactive — purely visual preview.
  */
 export function TemplateMockup() {
-  const iframe = (
-    <iframe
-      src="https://modernlight.nakespro.id"
-      title="Pratinjau template Modern Light"
-      className="pointer-events-none absolute inset-0 border-0"
-      sandbox="allow-scripts allow-same-origin"
-      tabIndex={-1}
-      aria-hidden="true"
-    />
-  );
-
   return (
     <div className="relative mx-auto max-w-5xl">
       {/* Glow behind device */}
@@ -41,17 +30,22 @@ export function TemplateMockup() {
 
               {/* Screen — hero preview */}
               <div className="relative aspect-[16/9] overflow-hidden bg-white">
-                <div
-                  className="absolute inset-0"
+                <iframe
+                  src="https://modernlight.nakespro.id"
+                  title="Pratinjau template Modern Light"
+                  className="pointer-events-none absolute border-0"
                   style={{
                     transform: "scale(0.65)",
                     transformOrigin: "top left",
                     width: "153.85%",
                     height: "153.85%",
+                    left: "0",
+                    top: "0",
                   }}
-                >
-                  {iframe}
-                </div>
+                  sandbox="allow-scripts allow-same-origin"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                />
                 {/* Gradient overlay at bottom to soften cutoff */}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white via-white/90 to-transparent" />
               </div>
@@ -111,17 +105,22 @@ export function TemplateMockup() {
 
             {/* Screen */}
             <div className="relative aspect-[3/5] overflow-hidden bg-white">
-              <div
-                className="absolute inset-0"
+              <iframe
+                src="https://modernlight.nakespro.id"
+                title="Pratinjau template Modern Light"
+                className="pointer-events-none absolute border-0"
                 style={{
                   transform: "scale(0.6)",
                   transformOrigin: "top left",
                   width: "166.67%",
                   height: "166.67%",
+                  left: "0",
+                  top: "0",
                 }}
-              >
-                {iframe}
-              </div>
+                sandbox="allow-scripts allow-same-origin"
+                tabIndex={-1}
+                aria-hidden="true"
+              />
               {/* Soft bottom fade */}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent" />
             </div>
