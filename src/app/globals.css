@@ -108,14 +108,16 @@ h1, h2, h3, h4 {
 /* Glow animation for device mockup borders */
 @keyframes glow-border {
   0%, 100% {
-    box-shadow: 0 0 6px color-mix(in srgb, var(--color-teal) 15%, transparent),
-                0 0 20px color-mix(in srgb, var(--color-teal) 8%, transparent),
-                var(--shadow-hero);
+    box-shadow: 0 0 6px rgba(63, 114, 175, 0.15),
+                0 0 20px rgba(63, 114, 175, 0.08),
+                0 1px 0 rgba(15, 23, 23, 0.04),
+                0 24px 48px -12px rgba(15, 23, 23, 0.18);
   }
   50% {
-    box-shadow: 0 0 14px color-mix(in srgb, var(--color-teal) 30%, transparent),
-                0 0 45px color-mix(in srgb, var(--color-teal) 12%, transparent),
-                var(--shadow-hero);
+    box-shadow: 0 0 14px rgba(63, 114, 175, 0.30),
+                0 0 45px rgba(63, 114, 175, 0.12),
+                0 1px 0 rgba(15, 23, 23, 0.04),
+                0 24px 48px -12px rgba(15, 23, 23, 0.18);
   }
 }
 
@@ -126,16 +128,18 @@ h1, h2, h3, h4 {
 /* Glow for phone mockup (darker base border) */
 @keyframes glow-border-phone {
   0%, 100% {
-    box-shadow: 0 0 6px color-mix(in srgb, var(--color-teal) 15%, transparent),
-                0 0 20px color-mix(in srgb, var(--color-teal) 8%, transparent),
-                var(--shadow-hero);
-    border-color: rgba(30, 30, 50, 1);
+    box-shadow: 0 0 6px rgba(63, 114, 175, 0.15),
+                0 0 20px rgba(63, 114, 175, 0.08),
+                0 1px 0 rgba(15, 23, 23, 0.04),
+                0 24px 48px -12px rgba(15, 23, 23, 0.18);
+    border-color: #1e1e32;
   }
   50% {
-    box-shadow: 0 0 14px color-mix(in srgb, var(--color-teal) 35%, transparent),
-                0 0 50px color-mix(in srgb, var(--color-teal) 15%, transparent),
-                var(--shadow-hero);
-    border-color: color-mix(in srgb, var(--color-teal) 40%, #1a1a2e);
+    box-shadow: 0 0 14px rgba(63, 114, 175, 0.35),
+                0 0 50px rgba(63, 114, 175, 0.15),
+                0 1px 0 rgba(15, 23, 23, 0.04),
+                0 24px 48px -12px rgba(15, 23, 23, 0.18);
+    border-color: rgba(63, 114, 175, 0.4);
   }
 }
 
