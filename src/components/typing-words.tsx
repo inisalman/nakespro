@@ -54,26 +54,13 @@ export function TypingWords({
     return () => clearTimeout(timeout);
   }, [text, phase, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
 
-  // Reserve width of the longest word to avoid layout shift while typing.
-  const longest = words.reduce((a, b) => (b.length > a.length ? b : a), "");
-
   return (
-    <span className="relative inline-block whitespace-nowrap">
-      {/* invisible sizer keeps the headline width stable */}
-      <span aria-hidden className="invisible">
-        {longest}
-      </span>
-      {/* animated overlay */}
+    <span className="inline text-teal" aria-label={words.join(", ")}>
+      {text}
       <span
-        className="absolute left-0 top-0 text-teal"
-        aria-label={words.join(", ")}
-      >
-        {text}
-        <span
-          aria-hidden
-          className="ml-0.5 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] animate-pulse rounded-full bg-teal align-middle"
-        />
-      </span>
+        aria-hidden
+        className="ml-0.5 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] animate-pulse rounded-full bg-teal align-middle"
+      />
     </span>
   );
 }

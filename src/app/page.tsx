@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
+import { MessageCircle, Sparkles } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
 import { Button } from "@/components/button";
 import { FaqList } from "@/components/faq-list";
 import { OrderForm } from "@/components/order-form";
-import { HeroMockup } from "@/components/hero-mockup";
 import { Logo } from "@/components/logo";
 import { PricingSection } from "@/components/pricing-section";
 import { TypingWords } from "@/components/typing-words";
@@ -55,9 +54,9 @@ export default function Home() {
       {/* ──────── Hero ──────── */}
       <section className="relative overflow-hidden px-6 pt-16 pb-12 md:pt-24 md:pb-20">
         <div className="mx-auto max-w-6xl">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-10">
-            {/* ── Left: copy ── */}
-            <div className="text-center lg:text-left">
+          <div className="flex items-center justify-center">
+            {/* ── Copy: center ── */}
+            <div className="text-center">
               {/* Eyebrow badge */}
               <div className="fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal-tint px-4 py-1.5 text-xs font-semibold tracking-wide text-teal-strong">
                 <Sparkles className="h-3.5 w-3.5" />
@@ -87,29 +86,24 @@ export default function Home() {
 
               {/* Subheadline */}
               <p
-                className="fade-up mx-auto mt-4 max-w-xl text-lg font-medium text-ink md:text-xl lg:mx-0"
+                className="fade-up mx-auto mt-4 max-w-xl text-lg font-medium text-ink md:text-xl"
                 style={{ animationDelay: "0.1s" }} >
                 Tanpa Bayar Domain, Tanpa Bayar Server
               </p>
 
               {/* Subtitle */}
               <p
-                className="fade-up mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-body md:text-lg lg:mx-0"
+                className="fade-up mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-body md:text-lg"
                 style={{ animationDelay: "0.15s" }} >
                 Kami handle semua teknis. Anda tinggal upload foto, atur jam praktik, terima pasien baru. Website live dalam hitungan hari.
               </p>
 
               {/* CTAs */}
               <div
-                className="fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
+                className="fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
                 style={{ animationDelay: "0.3s" }} >
-                <Button href="#order" variant="primary" size="lg">
-                  <MessageCircle className="h-5 w-5" />
-                  Daftar Sekarang
-                </Button>
-                <Button href="#harga" variant="outline" size="lg">
-                  Lihat Paket Lain
-                  <ArrowRight className="h-4 w-4" />
+                <Button href="#harga" variant="secondary" size="lg">
+                  Lihat Paket
                 </Button>
               </div>
 
@@ -121,10 +115,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* ── Right: laptop mockup ── */}
-            <div className="fade-up" style={{ animationDelay: "0.4s" }} >
-              <HeroMockup />
-            </div>
           </div>
         </div>
 
