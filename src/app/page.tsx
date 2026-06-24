@@ -28,8 +28,8 @@ export default function Home() {
           {/* Logo */}
           <Logo height={48} priority />
 
-          {/* Nav links */}
-          <div className="hidden items-center gap-1 md:flex">
+          {/* Nav links — centered */}
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
             {[
               { href: "#layanan", label: "Layanan" },
               { href: "#cara-kerja", label: "Cara Kerja" },
@@ -45,13 +45,17 @@ export default function Home() {
                 {link.label}
               </Link>
             ))}
+          </div>
+
+          {/* Masuk + Mulai Sekarang — kanan */}
+          <div className="hidden items-center gap-3 md:flex">
             <a
               href="https://app.nakespro.id/auth/login"
-              className="ml-3 rounded-full border border-line px-4 py-2 text-sm font-medium text-text-body transition-colors hover:bg-paper hover:text-ink"
+              className="rounded-full border border-line px-4 py-2 text-sm font-medium text-text-body transition-colors hover:bg-paper hover:text-ink"
             >
               Masuk
             </a>
-            <Button href="#order" variant="primary" size="sm" className="ml-3">
+            <Button href="#order" variant="primary" size="sm">
               Mulai Sekarang
             </Button>
           </div>
