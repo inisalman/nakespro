@@ -111,20 +111,20 @@ export function TemplateMockup() {
             </div>
 
             {/* Screen */}
-            <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
+            <div className="relative aspect-[3/5] overflow-hidden bg-white">
               <div
                 className="absolute inset-0"
                 style={{
-                  transform: "scale(0.36)",
+                  transform: "scale(0.6)",
                   transformOrigin: "top left",
-                  width: "277.78%",
-                  height: "277.78%",
+                  width: "166.67%",
+                  height: "166.67%",
                 }}
               >
                 {iframe}
               </div>
               {/* Soft bottom fade */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent" />
             </div>
 
             {/* Home indicator */}
