@@ -12,7 +12,6 @@ export function TemplateMockup() {
       title="Pratinjau template Modern Light"
       className="pointer-events-none absolute inset-0 border-0"
       sandbox="allow-scripts allow-same-origin"
-      loading="lazy"
       tabIndex={-1}
       aria-hidden="true"
     />
