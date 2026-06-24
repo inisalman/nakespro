@@ -34,10 +34,10 @@ export function TemplateMockup() {
                 title="Pratinjau template Modern Light"
                 className="pointer-events-none absolute inset-0 border-0"
                 style={{
-                  transform: "scale(0.4)",
+                  transform: "scale(0.65)",
                   transformOrigin: "top left",
-                  width: "250%",
-                  height: "250%",
+                  width: "153.85%",
+                  height: "153.85%",
                 }}
                 sandbox="allow-scripts allow-same-origin"
                 loading="lazy"
