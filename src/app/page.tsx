@@ -45,7 +45,13 @@ export default function Home() {
                 {link.label}
               </Link>
             ))}
-            <Button href="#order" variant="primary" size="sm" className="ml-4">
+            <a
+              href="https://app.nakespro.id/auth/login"
+              className="ml-3 rounded-full border border-line px-4 py-2 text-sm font-medium text-text-body transition-colors hover:bg-paper hover:text-ink"
+            >
+              Masuk
+            </a>
+            <Button href="#order" variant="primary" size="sm" className="ml-3">
               Mulai Sekarang
             </Button>
           </div>
