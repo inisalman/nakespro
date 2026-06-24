@@ -7,7 +7,7 @@ import { OrderForm } from "@/components/order-form";
 import { Logo } from "@/components/logo";
 import { PricingSection } from "@/components/pricing-section";
 import { TypingWords } from "@/components/typing-words";
-import { HeroMockup } from "@/components/hero-mockup";
+import { TemplateMockup } from "@/components/template-mockup";
 import {
   services,
   steps,
@@ -128,7 +128,7 @@ export default function Home() {
             <div className="relative">
               {/* Subtle shadow behind mockup */}
               <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-b from-teal/[0.03] via-teal/[0.01] to-transparent blur-2xl" />
-              <HeroMockup />
+              <TemplateMockup />
             </div>
           </div>
         </div>
