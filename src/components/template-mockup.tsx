@@ -15,7 +15,7 @@ export function TemplateMockup() {
       <div className="hidden md:block">
         <div className="group relative">
           {/* Lid / Screen section */}
-          <div className="relative overflow-hidden rounded-t-xl border border-line shadow-hero">
+          <div className="glow-border relative overflow-hidden rounded-t-xl border border-line shadow-hero">
             <div className="bg-[#1a1a2e]">
               {/* Top bar with camera notch */}
               <div className="flex items-center justify-center bg-[#1a1a2e] px-6 py-2.5">
@@ -87,7 +87,7 @@ export function TemplateMockup() {
       <div className="md:hidden">
         <div className="mx-auto flex max-w-[260px] flex-col items-center">
           {/* Phone body */}
-          <div className="relative w-full overflow-hidden rounded-[2.5rem] border-[3px] border-gray-800 bg-gray-900 shadow-hero">
+          <div className="glow-border-phone relative w-full overflow-hidden rounded-[2.5rem] border-[3px] border-gray-800 bg-gray-900 shadow-hero">
             {/* Side buttons */}
             <div className="absolute -left-[3px] top-16 h-8 w-[3px] rounded-r bg-gray-600" />
             <div className="absolute -left-[3px] top-24 h-12 w-[3px] rounded-r bg-gray-600" />

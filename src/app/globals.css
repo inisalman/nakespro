@@ -105,6 +105,44 @@ h1, h2, h3, h4 {
   mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
 }
 
+/* Glow animation for device mockup borders */
+@keyframes glow-border {
+  0%, 100% {
+    box-shadow: 0 0 6px color-mix(in srgb, var(--color-teal) 15%, transparent),
+                0 0 20px color-mix(in srgb, var(--color-teal) 8%, transparent),
+                var(--shadow-hero);
+  }
+  50% {
+    box-shadow: 0 0 14px color-mix(in srgb, var(--color-teal) 30%, transparent),
+                0 0 45px color-mix(in srgb, var(--color-teal) 12%, transparent),
+                var(--shadow-hero);
+  }
+}
+
+.glow-border {
+  animation: glow-border 3s ease-in-out infinite;
+}
+
+/* Glow for phone mockup (darker base border) */
+@keyframes glow-border-phone {
+  0%, 100% {
+    box-shadow: 0 0 6px color-mix(in srgb, var(--color-teal) 15%, transparent),
+                0 0 20px color-mix(in srgb, var(--color-teal) 8%, transparent),
+                var(--shadow-hero);
+    border-color: rgba(30, 30, 50, 1);
+  }
+  50% {
+    box-shadow: 0 0 14px color-mix(in srgb, var(--color-teal) 35%, transparent),
+                0 0 50px color-mix(in srgb, var(--color-teal) 15%, transparent),
+                var(--shadow-hero);
+    border-color: color-mix(in srgb, var(--color-teal) 40%, #1a1a2e);
+  }
+}
+
+.glow-border-phone {
+  animation: glow-border-phone 3s ease-in-out infinite;
+}
+
 /* Soft dotted divider */
 .dotted-divider {
   background-image: radial-gradient(circle, var(--color-line-strong) 1px, transparent 1px);
