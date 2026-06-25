@@ -1,9 +1,9 @@
-"use client";
+import Image from "next/image";
 
 /**
- * Device mockup showing hero section of modernlight.nakespro.id.
+ * Device mockup — static image preview instead of live iframe.
  * Desktop: laptop frame. Mobile: phone frame.
- * Non-interactive — purely visual preview.
+ * Using static Image for drastically better LCP and performance.
  */
 export function TemplateMockup() {
   return (
@@ -28,23 +28,15 @@ export function TemplateMockup() {
                 </div>
               </div>
 
-              {/* Screen — hero preview */}
+              {/* Screen — hero preview image */}
               <div className="relative aspect-[16/9] overflow-hidden bg-white">
-                <iframe
-                  src="https://modernlight.nakespro.id"
-                  title="Pratinjau template Modern Light"
-                  className="pointer-events-none absolute border-0"
-                  style={{
-                    transform: "scale(0.65)",
-                    transformOrigin: "top left",
-                    width: "153.85%",
-                    height: "153.85%",
-                    left: "0",
-                    top: "0",
-                  }}
-                  sandbox="allow-scripts allow-same-origin"
-                  tabIndex={-1}
-                  aria-hidden="true"
+                <Image
+                  src="/hero-template.webp"
+                  alt="Pratinjau template Modern Light"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                  className="object-cover"
                 />
                 {/* Gradient overlay at bottom to soften cutoff */}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white via-white/90 to-transparent" />
@@ -105,21 +97,13 @@ export function TemplateMockup() {
 
             {/* Screen */}
             <div className="relative aspect-[3/5] overflow-hidden bg-white">
-              <iframe
-                src="https://modernlight.nakespro.id"
-                title="Pratinjau template Modern Light"
-                className="pointer-events-none absolute border-0"
-                style={{
-                  transform: "scale(0.6)",
-                  transformOrigin: "top left",
-                  width: "166.67%",
-                  height: "166.67%",
-                  left: "0",
-                  top: "0",
-                }}
-                sandbox="allow-scripts allow-same-origin"
-                tabIndex={-1}
-                aria-hidden="true"
+              <Image
+                src="/hero-template.webp"
+                alt="Pratinjau template Modern Light"
+                fill
+                priority
+                sizes="260px"
+                className="object-cover"
               />
               {/* Soft bottom fade */}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent" />

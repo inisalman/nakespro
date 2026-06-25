@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Star, MessageCircle, Sparkles } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
@@ -244,12 +245,13 @@ export default function Home() {
               className="group overflow-hidden rounded-2xl border border-line bg-white transition-all hover:border-teal/30 hover:shadow-card"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
-                <iframe
-                  src={item.url}
-                  title={`Pratinjau ${item.name}`}
-                  className="absolute inset-0 w-full h-full pointer-events-none border-0"
-                  sandbox="allow-scripts allow-same-origin"
-                  style={{ transform: "scale(0.35)", transformOrigin: "top left", width: "285%", height: "285%" }}
+                <Image
+                  src={`/${item.id}.webp`}
+                  alt={`Pratinjau ${item.name}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="p-5">
