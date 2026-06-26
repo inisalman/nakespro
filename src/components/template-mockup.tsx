@@ -1,8 +1,7 @@
 import Image from "next/image";
 
 /**
- * Device mockup — static image preview instead of live iframe.
- * Desktop: laptop frame. Mobile: phone frame.
+ * Device mockup — iPhone frame for all screen sizes.
  * Using static Image for drastically better LCP and performance.
  */
 export function TemplateMockup() {
@@ -11,108 +10,42 @@ export function TemplateMockup() {
       {/* Glow behind device */}
       <div className="absolute -inset-8 -z-10 rounded-[40px] bg-gradient-to-b from-teal/[0.03] via-teal/[0.01] to-transparent blur-3xl" />
 
-      {/* ═══ Desktop: Laptop ═══ */}
-      <div className="hidden md:block">
-        <div className="group relative">
-          {/* Lid / Screen section */}
-          <div className="glow-border relative overflow-hidden rounded-t-xl border border-line shadow-hero">
-            <div className="bg-[#1a1a2e]">
-              {/* Top bar with camera notch */}
-              <div className="flex items-center justify-center bg-[#1a1a2e] px-6 py-2.5">
-                <div className="relative flex items-center gap-2">
-                  <div className="h-1.5 w-1.5 rounded-full bg-gray-600" />
-                  <div className="h-3 w-3 rounded-full bg-gray-800 ring-2 ring-gray-700/50">
-                    <div className="mx-auto mt-0.5 h-1.5 w-1.5 rounded-full bg-gray-900" />
-                  </div>
-                  <div className="h-1.5 w-1.5 rounded-full bg-gray-600" />
-                </div>
-              </div>
+      {/* ═══ iPhone — all sizes ═══ */}
+      <div className="mx-auto flex max-w-[260px] flex-col items-center md:max-w-[340px]">
+        {/* Phone body */}
+        <div className="glow-border-phone relative w-full overflow-hidden rounded-[2.5rem] border-[3px] border-gray-800 bg-gray-900 shadow-hero md:rounded-[3rem] md:border-[4px]">
+          {/* Side buttons */}
+          <div className="absolute -left-[3px] top-16 h-8 w-[3px] rounded-r bg-gray-600" />
+          <div className="absolute -left-[3px] top-24 h-12 w-[3px] rounded-r bg-gray-600" />
+          <div className="absolute -right-[3px] top-20 h-10 w-[3px] rounded-l bg-gray-600" />
 
-              {/* Screen — hero preview image */}
-              <div className="relative aspect-[16/9] overflow-hidden bg-white">
-                <Image
-                  src="/hero-template.webp"
-                  alt="Pratinjau template Modern Light"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                  className="object-cover"
-                />
-                {/* Gradient overlay at bottom to soften cutoff */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white via-white/90 to-transparent" />
+          {/* Dynamic Island */}
+          <div className="flex items-center justify-center pt-3 md:pt-4">
+            <div className="h-[18px] w-[80px] rounded-full bg-black md:h-[22px] md:w-[100px]">
+              <div className="mx-auto flex h-full w-[60px] items-center justify-center gap-1 md:w-[80px]">
+                <div className="h-1.5 w-1.5 rounded-full bg-gray-800" />
+                <div className="h-2 w-2 rounded-full bg-gray-800" />
               </div>
             </div>
           </div>
 
-          {/* Laptop base / keyboard deck */}
-          <div className="relative mx-auto rounded-b-lg border-x border-b border-line bg-gray-50 shadow-hero-float">
-            <div className="flex items-center justify-center border-b border-gray-200 bg-gray-100 py-1.5">
-              <div className="flex gap-0.5">
-                {[...Array(7)].map((_, i) => (
-                  <div key={i} className="h-1 w-1 rounded-full bg-gray-300" />
-                ))}
-              </div>
-            </div>
-            <div className="px-8 py-4">
-              <div className="space-y-1">
-                {[12, 12, 11, 10, 6].map((keys, row) => (
-                  <div key={row} className="flex justify-center gap-1">
-                    {[...Array(keys)].map((_, k) => (
-                      <div
-                        key={k}
-                        className={`rounded bg-gray-200 ${
-                          row === 4 && k === 2 ? "w-16" : "w-5"
-                        } h-2.5`}
-                      />
-                    ))}
-                  </div>
-                ))}
-              </div>
-              <div className="mx-auto mt-3 h-8 w-28 rounded-sm bg-gray-200" />
-            </div>
-            <div className="h-1 rounded-b-lg bg-gray-300" />
+          {/* Screen */}
+          <div className="relative aspect-[9/19] overflow-hidden bg-white md:aspect-[9/19.5]">
+            <Image
+              src="/hero-template.webp"
+              alt="Pratinjau template Modern Light"
+              fill
+              priority
+              sizes="(max-width: 768px) 260px, 340px"
+              className="object-cover"
+            />
+            {/* Soft bottom fade */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent md:h-16" />
           </div>
-        </div>
-      </div>
 
-      {/* ═══ Mobile: Phone ═══ */}
-      <div className="md:hidden">
-        <div className="mx-auto flex max-w-[260px] flex-col items-center">
-          {/* Phone body */}
-          <div className="glow-border-phone relative w-full overflow-hidden rounded-[2.5rem] border-[3px] border-gray-800 bg-gray-900 shadow-hero">
-            {/* Side buttons */}
-            <div className="absolute -left-[3px] top-16 h-8 w-[3px] rounded-r bg-gray-600" />
-            <div className="absolute -left-[3px] top-24 h-12 w-[3px] rounded-r bg-gray-600" />
-            <div className="absolute -right-[3px] top-20 h-10 w-[3px] rounded-l bg-gray-600" />
-
-            {/* Dynamic Island */}
-            <div className="flex items-center justify-center pt-3">
-              <div className="h-[18px] w-[80px] rounded-full bg-black">
-                <div className="mx-auto flex h-full w-[60px] items-center justify-center gap-1">
-                  <div className="h-1.5 w-1.5 rounded-full bg-gray-800" />
-                  <div className="h-2 w-2 rounded-full bg-gray-800" />
-                </div>
-              </div>
-            </div>
-
-            {/* Screen */}
-            <div className="relative aspect-[3/5] overflow-hidden bg-white">
-              <Image
-                src="/hero-template.webp"
-                alt="Pratinjau template Modern Light"
-                fill
-                priority
-                sizes="260px"
-                className="object-cover"
-              />
-              {/* Soft bottom fade */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent" />
-            </div>
-
-            {/* Home indicator */}
-            <div className="flex items-center justify-center pb-2 pt-1">
-              <div className="h-1 w-28 rounded-full bg-gray-500" />
-            </div>
+          {/* Home indicator */}
+          <div className="flex items-center justify-center pb-2 pt-1 md:pb-3 md:pt-1.5">
+            <div className="h-1 w-28 rounded-full bg-gray-500" />
           </div>
         </div>
       </div>
