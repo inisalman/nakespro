@@ -155,3 +155,34 @@ h1, h2, h3, h4 {
   background-repeat: repeat-x;
   height: 8px;
 }
+
+/* Floating animation for mockup */
+@keyframes float-mockup {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-mockup {
+  animation: float-mockup 6s ease-in-out infinite;
+}
+
+/* Breathing glow behind mockup */
+@keyframes breathe-glow-mockup {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.06);
+    opacity: 0.45;
+  }
+}
+
+.animate-breathe-glow-mockup {
+  animation: breathe-glow-mockup 4s ease-in-out infinite;
+}
+

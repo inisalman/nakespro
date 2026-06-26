@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Star, MessageCircle, Sparkles } from "lucide-react";
+import { MessageCircle, Sparkles, Mail, ExternalLink } from "lucide-react";
 import { Section, SectionHeading } from "@/components/section";
 import { Button } from "@/components/button";
 import { FaqList } from "@/components/faq-list";
@@ -9,6 +9,11 @@ import { Logo } from "@/components/logo";
 import { PricingSection } from "@/components/pricing-section";
 import { TypingWords } from "@/components/typing-words";
 import { TemplateMockup } from "@/components/template-mockup";
+import { TestimonialSection } from "@/components/testimonial-section";
+import { WhatsappFab } from "@/components/whatsapp-fab";
+import { MobileNav } from "@/components/mobile-nav";
+import { StickyCTABar } from "@/components/sticky-cta-bar";
+import { HeroCounters } from "@/components/hero-counters";
 import {
   services,
   steps,
@@ -25,7 +30,7 @@ export default function Home() {
     <main className="grain relative">
       {/* ──────── Nav ──────── */}
       <nav className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           {/* Logo */}
           <Logo height={48} priority />
 
@@ -48,7 +53,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Masuk + Mulai Sekarang — kanan */}
+          {/* Masuk + Mulai Sekarang — kanan (desktop) */}
           <div className="hidden items-center gap-3 md:flex">
             <a
               href="https://app.nakespro.id/auth/login"
@@ -56,10 +61,13 @@ export default function Home() {
             >
               Masuk
             </a>
-            <Button href="#order" variant="primary" size="sm">
+            <Button href="#harga" variant="secondary" size="sm">
               Mulai Sekarang
             </Button>
           </div>
+
+          {/* Mobile hamburger */}
+          <MobileNav />
         </div>
       </nav>
 
@@ -116,20 +124,8 @@ export default function Home() {
               </Button>
             </div>
 
-            {/* Trust indicator */}
-            <p
-              className="fade-up mt-6 text-sm text-text-muted"
-              style={{ animationDelay: "0.45s" }} >
-              <span className="inline-flex items-center gap-1">
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                <span className="ml-1.5 font-semibold text-ink">4.8</span>
-                <span className="ml-0.5">dari 200+ nakes sudah pakai</span>
-              </span>
-            </p>
+            {/* Animated counters */}
+            <HeroCounters />
           </div>
 
           {/* ── Visual mockup below ── */}
@@ -214,6 +210,11 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </Section>
+
+      {/* ──────── Testimoni ──────── */}
+      <Section id="testimoni" bg="white">
+        <TestimonialSection />
       </Section>
 
       {/* ──────── Harga ──────── */}
@@ -319,15 +320,160 @@ export default function Home() {
       </Section>
 
       {/* ──────── Footer ──────── */}
-      <footer className="border-t border-line bg-white px-6 py-12">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
-          <Logo height={42} />
-          <p className="text-sm text-text-muted">
-            &copy; {new Date().getFullYear()} NakesPro.id — Jasa pembuatan
-            website tenaga kesehatan.
-          </p>
+      <footer className="relative overflow-hidden border-t border-line bg-gradient-to-b from-white to-paper/60 px-6 pb-28 pt-16 md:pb-20 md:pt-20">
+        {/* Ambient background decoration */}
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-teal/[0.03] blur-3xl" />
+        <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-teal/[0.015] blur-3xl" />
+
+        <div className="mx-auto max-w-6xl relative z-10">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Col 1: Brand */}
+            <div className="sm:col-span-2 lg:col-span-1">
+              <Logo height={42} />
+              <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-body">
+                Platform pembuatan website profesional, cepat, dan handal khusus untuk tenaga kesehatan di seluruh Indonesia.
+              </p>
+              {/* Social links */}
+              <div className="mt-6 flex gap-3">
+                <a
+                  href="https://instagram.com/nakespro.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white text-text-muted shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal/30 hover:bg-teal-tint hover:text-teal hover:shadow-md"
+                >
+                  <svg className="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                  </svg>
+                </a>
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white text-text-muted shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal/30 hover:bg-teal-tint hover:text-teal hover:shadow-md"
+                >
+                  <MessageCircle className="h-4.5 w-4.5" strokeWidth={2.5} />
+                </a>
+              </div>
+            </div>
+
+            {/* Col 2: Navigasi */}
+            <div>
+              <p className="mb-5 text-xs font-bold uppercase tracking-wider text-ink">Navigasi</p>
+              <ul className="space-y-3">
+                {[
+                  { href: "#layanan", label: "Layanan" },
+                  { href: "#cara-kerja", label: "Cara Kerja" },
+                  { href: "#harga", label: "Harga" },
+                  { href: "#portofolio", label: "Portofolio" },
+                  { href: "#testimoni", label: "Testimoni" },
+                  { href: "#faq", label: "FAQ" },
+                ].map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="group flex items-center gap-1.5 text-sm text-text-body transition-colors duration-200 hover:text-teal"
+                    >
+                      <span className="h-1 w-1 rounded-full bg-teal opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">{l.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Col 3: Paket */}
+            <div>
+              <p className="mb-5 text-xs font-bold uppercase tracking-wider text-ink">Paket</p>
+              <ul className="space-y-3">
+                {[
+                  { href: "https://app.nakespro.id/register?package=starter", label: "Paket Starter" },
+                  { href: "https://app.nakespro.id/register?package=advance", label: "Paket Advance" },
+                  { href: waLink, label: "Paket Professional" },
+                ].map((l) => (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-1.5 text-sm text-text-body transition-colors duration-200 hover:text-teal"
+                    >
+                      <span className="h-1 w-1 rounded-full bg-teal opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">{l.label}</span>
+                      <ExternalLink className="h-3.5 w-3.5 opacity-0 transition-opacity duration-200 group-hover:opacity-60" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Col 4: Kontak */}
+            <div>
+              <p className="mb-5 text-xs font-bold uppercase tracking-wider text-ink">Kontak</p>
+              <ul className="space-y-4">
+                <li>
+                  <a
+                    href={waLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start gap-3 text-sm text-text-body transition-colors duration-200 hover:text-teal"
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-line bg-white text-text-muted transition-colors group-hover:border-teal/30 group-hover:bg-teal-tint group-hover:text-teal">
+                      <MessageCircle className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <span className="block text-xs font-semibold text-text-muted uppercase tracking-wide">WhatsApp</span>
+                      <span className="text-sm font-medium text-ink group-hover:text-teal transition-colors">+62 856-846-1024</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:halo@nakespro.id"
+                    className="group flex items-start gap-3 text-sm text-text-body transition-colors duration-200 hover:text-teal"
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-line bg-white text-text-muted transition-colors group-hover:border-teal/30 group-hover:bg-teal-tint group-hover:text-teal">
+                      <Mail className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <span className="block text-xs font-semibold text-text-muted uppercase tracking-wide">Email</span>
+                      <span className="text-sm font-medium text-ink group-hover:text-teal transition-colors">halo@nakespro.id</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Button href="#harga" variant="secondary" size="sm" className="w-full sm:w-auto shadow-sm shadow-teal/10 hover:shadow-md hover:shadow-teal/20 transition-all duration-200">
+                  Mulai Sekarang
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row">
+            <div className="flex flex-col items-center gap-2 sm:items-start">
+              <p className="text-xs text-text-muted">
+                &copy; {new Date().getFullYear()} NakesPro.id — All rights reserved.
+              </p>
+              <p className="text-[10px] text-text-muted/60 flex items-center gap-1">
+                Dibuat dengan <span className="text-rose-500 animate-pulse">❤️</span> untuk pahlawan kesehatan Indonesia.
+              </p>
+            </div>
+            <div className="flex gap-6">
+              <Link href="/kebijakan-privasi" className="text-xs text-text-muted transition-colors hover:text-teal font-medium">Kebijakan Privasi</Link>
+              <Link href="/syarat-ketentuan" className="text-xs text-text-muted transition-colors hover:text-teal font-medium">Syarat &amp; Ketentuan</Link>
+            </div>
+          </div>
         </div>
       </footer>
+
+      {/* ──────── Fixed / Floating UI ──────── */}
+      <WhatsappFab />
+      <StickyCTABar />
     </main>
   );
 }

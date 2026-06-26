@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export function Section({
@@ -23,9 +26,17 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("w-full px-6 py-20 md:py-28", bgMap[bg], className)}
+      className={cn("w-full px-6 py-20 md:py-28 overflow-hidden", bgMap[bg], className)}
     >
-      <div className="mx-auto max-w-6xl">{children}</div>
+      <motion.div 
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="mx-auto max-w-6xl"
+      >
+        {children}
+      </motion.div>
     </section>
   );
 }

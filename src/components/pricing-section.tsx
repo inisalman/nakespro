@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, X, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/button";
 import { plans, WHATSAPP_NUMBER } from "@/lib/content";
 
@@ -11,15 +12,37 @@ const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   "Halo NakesPro.id, saya ingin tanya soal website untuk nakes."
 )}`;
 
+// Comparison rows: [label, starter, advance, professional]
+const comparisonRows: [string, boolean | string, boolean | string, boolean | string][] = [
+  ["Gratis domain .nakespro.id",          true,            true,            true],
+  ["Hosting & server included",            true,            true,            true],
+  ["Responsive di semua perangkat",        true,            true,            true],
+  ["Support via WhatsApp",                 true,            true,            true],
+  ["Booking online pasien",                true,            true,            true],
+  ["Dashboard analitik pengunjung",        true,            true,            true],
+  ["Domain .com gratis (tahunan)",         false,           true,            true],
+  ["Optimasi SEO Google",                  false,           true,            true],
+  ["Google Maps & Bisnis",                 false,           true,            true],
+  ["Invoice otomatis ke pasien",           false,           true,            true],
+  ["Desain sesuai brand",                  false,           true,            true],
+  ["Pendampingan onboarding",              false,           true,            true],
+  ["Multi-website (banyak cabang)",        false,           false,           true],
+  ["SEO lanjut & laporan bulanan",         false,           false,           true],
+  ["WhatsApp Business terintegrasi",       false,           false,           true],
+  ["Multi-admin akses tim",                false,           false,           true],
+  ["Manajer akun khusus",                  false,           false,           true],
+  ["Prioritas support & jaminan uptime",   false,           false,           true],
+];
+
 export function PricingSection() {
   const [billing, setBilling] = useState<Billing>("yearly");
+  const [showTable, setShowTable] = useState(false);
 
   return (
     <>
-      {/* Billing toggle — segmented control with sliding indicator */}
+      {/* Billing toggle */}
       <div className="mb-12 flex flex-col items-center gap-3">
         <div className="relative inline-flex items-center rounded-full border border-line bg-paper p-1">
-          {/* Sliding indicator */}
           <span
             className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-white shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               billing === "yearly" ? "translate-x-[calc(100%+0px)]" : "translate-x-0"
@@ -75,7 +98,7 @@ export function PricingSection() {
                 {plan.tagline}
               </p>
 
-              {/* Price block — fades on billing switch */}
+              {/* Price block */}
               <div key={billing} className="fade-up mt-6">
                 {billing === "yearly" && plan.monthly.price !== "Custom" && plan.monthly.price !== "-" && (
                   <div className="mb-1">
@@ -133,6 +156,82 @@ export function PricingSection() {
           );
         })}
       </div>
+
+      {/* Comparison Table Toggle */}
+      <div className="mt-10 text-center">
+        <button
+          type="button"
+          onClick={() => setShowTable(!showTable)}
+          className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-5 py-2.5 text-sm font-medium text-text-body shadow-sm transition-colors hover:bg-paper hover:text-ink"
+        >
+          {showTable ? "Sembunyikan" : "Bandingkan semua fitur"}
+          <motion.span animate={{ rotate: showTable ? 180 : 0 }} transition={{ duration: 0.3 }}>
+            <ChevronDown className="h-4 w-4" />
+          </motion.span>
+        </button>
+      </div>
+
+      {/* Comparison Table */}
+      <AnimatePresence>
+        {showTable && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="mt-8 overflow-x-auto rounded-2xl border border-line">
+              <table className="w-full border-collapse text-sm">
+                <thead>
+                  <tr className="border-b border-line bg-paper">
+                    <th className="px-6 py-4 text-left font-semibold text-ink">Fitur</th>
+                    {plans.map((p) => (
+                      <th
+                        key={p.name}
+                        className={`px-4 py-4 text-center font-semibold ${
+                          p.highlight ? "text-teal-strong" : "text-ink"
+                        }`}
+                      >
+                        {p.name.replace("Paket ", "")}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonRows.map(([label, s, a, pro], i) => (
+                    <tr
+                      key={label}
+                      className={`border-b border-line last:border-0 ${
+                        i % 2 === 0 ? "bg-white" : "bg-paper/50"
+                      }`}
+                    >
+                      <td className="px-6 py-3.5 text-text-body">{label}</td>
+                      {[s, a, pro].map((val, ci) => (
+                        <td key={ci} className="px-4 py-3.5 text-center">
+                          {typeof val === "string" ? (
+                            <span className="text-xs font-medium text-text-body">{val}</span>
+                          ) : val ? (
+                            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-teal/10 mx-auto">
+                              <Check className="h-3.5 w-3.5 text-teal" strokeWidth={3} />
+                            </span>
+                          ) : (
+                            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-paper mx-auto">
+                              <X className="h-3.5 w-3.5 text-text-muted" strokeWidth={2} />
+                            </span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
+
+

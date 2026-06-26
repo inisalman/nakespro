@@ -157,3 +157,52 @@ export const faqs = [
   { q: "Apakah website bisa menerima booking pasien?", a: "Ya. Paket Template dan Custom keduanya mendukung booking online. Pasien bisa request janji langsung dari website Anda." },
   { q: "Bagaimana cara memulai?", a: "Klik \"Daftar Sekarang\" atau isi form di bawah. Tim kami akan menghubungi Anda dalam 1x24 jam untuk konfirmasi." },
 ];
+
+export const testimonials = [
+  {
+    initial: "SR",
+    name: "Siti Rahmawati",
+    role: "Perawat Luka Mandiri",
+    city: "Jakarta Selatan",
+    rating: 5,
+    quote: "Saya nggak ngerti teknis sama sekali, tapi tim NakesPro bantu dari awal sampai website saya live. Dalam 2 hari pasien langsung bisa booking via website!",
+    color: "bg-teal-tint text-teal-strong",
+  },
+  {
+    initial: "DA",
+    name: "dr. Dian Ayu, S.Kep",
+    role: "Homecare & Injeksi",
+    city: "Surabaya",
+    rating: 5,
+    quote: "Harganya terjangkau banget, sudah dapat domain dan hosting. Saya bilang ke teman-teman sesama perawat supaya daftar juga. Worth it!",
+    color: "bg-amber-50 text-amber-700",
+  },
+  {
+    initial: "BW",
+    name: "Bidan Wulandari",
+    role: "Bidan & Laktasi",
+    city: "Yogyakarta",
+    rating: 5,
+    quote: "Tampilan websitenya bersih dan profesional. Pasien sering bilang dapat website saya dari Google. Alhamdulillah, sekarang jadwal lebih penuh.",
+    color: "bg-purple-50 text-purple-700",
+  },
+  {
+    initial: "RP",
+    name: "Rizal Pratama, Amd.Fis",
+    role: "Fisioterapis",
+    city: "Bandung",
+    rating: 5,
+    quote: "Support-nya responsif banget. Setiap ada yang mau diubah, langsung direspon dalam hitungan jam. Tidak pernah kecewa sejak berlangganan.",
+    color: "bg-blue-50 text-blue-700",
+  },
+  {
+    initial: "NH",
+    name: "Ns. Nurul Hidayah",
+    role: "Perawat Home Visit",
+    city: "Semarang",
+    rating: 5,
+    quote: "Dulu saya pikir buat website itu mahal dan ribet. Ternyata lewat NakesPro cukup isi form, bayar, dan websitenya sudah jadi. Praktis banget!",
+    color: "bg-green-50 text-green-700",
+  },
+];
+
