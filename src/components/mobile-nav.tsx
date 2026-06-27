@@ -9,7 +9,7 @@ import { WHATSAPP_NUMBER } from "@/lib/content";
 
 const navLinks = [
   { href: "#layanan", label: "Layanan" },
-  { href: "#cara-kerja", label: "Cara Kerja" },
+  { href: "#keuntungan", label: "Keuntungan" },
   { href: "#harga", label: "Harga" },
   { href: "#portofolio", label: "Portofolio" },
   { href: "#faq", label: "FAQ" },
@@ -78,13 +78,13 @@ export function MobileNav() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05, duration: 0.2 }}
                   >
-                    <Link
+                    <a
                       href={link.href}
                       onClick={() => setOpen(false)}
                       className="flex rounded-xl px-4 py-3 text-sm font-medium text-text-body transition-colors hover:bg-paper hover:text-ink"
                     >
                       {link.label}
-                    </Link>
+                    </a>
                   </motion.div>
                 ))}
               </nav>

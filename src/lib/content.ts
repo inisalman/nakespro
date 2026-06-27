@@ -1,4 +1,15 @@
-import { Stethoscope, Heart, Activity, Baby, Home, Syringe } from "lucide-react";
+import {
+  Stethoscope,
+  Heart,
+  Activity,
+  Baby,
+  Home,
+  Syringe,
+  Globe,
+  Calendar,
+  FileText,
+  ShieldCheck,
+} from "lucide-react";
 
 export const WHATSAPP_NUMBER = "628568461024";
 
@@ -11,11 +22,27 @@ export const services = [
   { icon: Heart, title: "Klinik Kecil", desc: "Website profesional untuk klinik atau praktik bersama." },
 ];
 
-export const steps = [
-  { num: "01", title: "Daftar", desc: "2 menit. Pilih template, isi data basic, verifikasi via WhatsApp. Selesai." },
-  { num: "02", title: "Bayar", desc: "Mulai Rp25.000/bulan atau tahunan. QRIS instant, langsung diproses." },
-  { num: "03", title: "Live", desc: "Dalam 1-3 hari website Anda sudah online dan siap terima pasien." },
-  { num: "04", title: "Support", desc: "Ada yang perlu diubah? Tinggal chat kami via WhatsApp." },
+export const benefits = [
+  {
+    icon: Globe,
+    title: "Promosi 24/7 & Jangkauan Luas",
+    desc: "Website Anda bekerja terus-menerus mengenalkan layanan homecare Anda di Google. Pasien lebih mudah menemukan Anda saat mencari jasa nakes terdekat.",
+  },
+  {
+    icon: Calendar,
+    title: "Manajemen Jadwal Praktis",
+    desc: "Pasien bisa booking online secara mandiri. Mengurangi chat WhatsApp yang menumpuk hanya untuk menanyakan jam kosong atau jadwal kosong.",
+  },
+  {
+    icon: FileText,
+    title: "Manajemen Pasien & Invoice",
+    desc: "Catat riwayat tindakan pasien dan kirim invoice digital otomatis secara rapi. Memudahkan Anda memantau riwayat kunjungan tanpa kertas berantakan.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Kredibilitas Profesional Meningkat",
+    desc: "Miliki profil terpercaya dengan domain khusus. Pasien dan keluarga merasa lebih aman dan yakin memilih layanan nakes yang memiliki website resmi.",
+  },
 ];
 
 export const plans = [

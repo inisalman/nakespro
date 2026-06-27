@@ -14,7 +14,7 @@ export function WhatsappFab() {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3 md:bottom-8 md:right-8">
+    <div className="fixed bottom-8 right-8 z-50 hidden flex-col items-end gap-3 md:flex">
       {/* Tooltip bubble */}
       <AnimatePresence>
         {hovered && (

@@ -14,9 +14,9 @@ import { WhatsappFab } from "@/components/whatsapp-fab";
 import { MobileNav } from "@/components/mobile-nav";
 import { StickyCTABar } from "@/components/sticky-cta-bar";
 import { HeroCounters } from "@/components/hero-counters";
+import { BenefitsSection } from "@/components/benefits-section";
 import {
   services,
-  steps,
   portfolio,
   WHATSAPP_NUMBER,
 } from "@/lib/content";
@@ -38,18 +38,18 @@ export default function Home() {
           <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
             {[
               { href: "#layanan", label: "Layanan" },
-              { href: "#cara-kerja", label: "Cara Kerja" },
+              { href: "#keuntungan", label: "Keuntungan" },
               { href: "#harga", label: "Harga" },
               { href: "#portofolio", label: "Portofolio" },
               { href: "#faq", label: "FAQ" },
             ].map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
                 className="rounded-full px-4 py-2 text-sm font-medium text-text-body transition-colors hover:bg-paper hover:text-ink"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -73,7 +73,16 @@ export default function Home() {
 
       {/* ──────── Hero ──────── */}
       <section className="relative overflow-hidden px-6 pt-16 pb-16 md:pt-24 md:pb-20 lg:pb-24">
-        <div className="mx-auto max-w-6xl">
+        {/* Background decorative elements */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="pointer-events-none absolute -left-32 -top-32 h-80 w-80 rounded-full bg-teal/4 blur-3xl" />
+          <div className="pointer-events-none absolute -right-32 top-20 h-80 w-80 rounded-full bg-teal/3 blur-3xl" />
+          <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2">
+            <div className="pointer-events-none h-[600px] w-[800px] rounded-[100%] bg-gradient-to-b from-teal/[0.015] to-transparent blur-3xl" />
+          </div>
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-6xl">
           {/* ── Text content: center ── */}
           <div className="mx-auto max-w-3xl text-center">
             {/* Eyebrow badge */}
@@ -139,15 +148,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* Background decorative elements */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-teal/4 blur-3xl" />
-          <div className="absolute -right-32 top-20 h-80 w-80 rounded-full bg-teal/3 blur-3xl" />
-          <div className="absolute left-1/2 top-0 -translate-x-1/2">
-            <div className="h-[600px] w-[800px] rounded-[100%] bg-gradient-to-b from-teal/[0.015] to-transparent blur-3xl" />
-          </div>
-        </div>
       </section>
 
       {/* ──────── Dotted Divider ──────── */}
@@ -184,32 +184,19 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──────── Cara Kerja ──────── */}
-      <Section id="cara-kerja" bg="paper">
-        <SectionHeading
-          eyebrow="Dari Daftar hingga Live"
-          title="Hanya 4 langkah, selesai dalam 1-3 hari"
-          titleAccent="1-3 hari"
-          subtitle="Daftar hari ini, website live minggu ini. Kami yang urus teknisnya."
+      {/* ──────── Keuntungan memiliki Website ──────── */}
+      <Section id="keuntungan" bg="paper">
+        <BenefitsSection
+          header={
+            <SectionHeading
+              eyebrow="Keuntungan"
+              title="Mengapa Nakes Homecare butuh website sendiri?"
+              titleAccent="butuh website sendiri?"
+              subtitle="Mudahkan promosi layanan Anda ke pasien baru dan optimalkan manajemen jadwal praktik secara terpusat."
+              className="mb-2 lg:mb-6"
+            />
+          }
         />
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step) => (
-            <div
-              key={step.num}
-              className="relative rounded-2xl border border-line bg-white p-6"
-            >
-              <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-sm font-bold text-white">
-                {step.num}
-              </span>
-              <h3 className="mb-1.5 text-base font-semibold text-ink">
-                {step.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-text-body">
-                {step.desc}
-              </p>
-            </div>
-          ))}
-        </div>
       </Section>
 
       {/* ──────── Testimoni ──────── */}
@@ -288,7 +275,7 @@ export default function Home() {
                 backgroundImage:
                   "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)",
                 backgroundSize: "20px 20px",
-              }}/>
+              }} />
           </div>
 
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
@@ -343,9 +330,9 @@ export default function Home() {
                   className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white text-text-muted shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal/30 hover:bg-teal-tint hover:text-teal hover:shadow-md"
                 >
                   <svg className="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
                   </svg>
                 </a>
                 <a
@@ -366,20 +353,20 @@ export default function Home() {
               <ul className="space-y-3">
                 {[
                   { href: "#layanan", label: "Layanan" },
-                  { href: "#cara-kerja", label: "Cara Kerja" },
+                  { href: "#keuntungan", label: "Keuntungan" },
                   { href: "#harga", label: "Harga" },
                   { href: "#portofolio", label: "Portofolio" },
                   { href: "#testimoni", label: "Testimoni" },
                   { href: "#faq", label: "FAQ" },
                 ].map((l) => (
                   <li key={l.href}>
-                    <Link
+                    <a
                       href={l.href}
                       className="group flex items-center gap-1.5 text-sm text-text-body transition-colors duration-200 hover:text-teal"
                     >
                       <span className="h-1 w-1 rounded-full bg-teal opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
                       <span className="transition-transform duration-200 group-hover:translate-x-1">{l.label}</span>
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
