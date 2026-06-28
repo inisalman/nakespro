@@ -388,7 +388,7 @@ export function BenefitsSection() {
       {/* ── Right Column: Animated Panel ── */}
       <div className="flex justify-center items-start">
         <motion.div
-          className="relative w-full rounded-3xl overflow-hidden min-h-[420px] md:min-h-[460px] flex items-center justify-center"
+          className="relative w-full rounded-3xl overflow-hidden h-[420px] md:h-[460px] flex items-center justify-center"
           animate={{
             backgroundColor: `rgba(${ac.rgb}, 0.04)`,
             borderColor: `rgba(${ac.rgb}, 0.12)`,
