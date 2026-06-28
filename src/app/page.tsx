@@ -187,17 +187,14 @@ export default function Home() {
 
       {/* ──────── Keuntungan memiliki Website ──────── */}
       <Section id="keuntungan" bg="paper">
-        <BenefitsSection
-          header={
-            <SectionHeading
-              eyebrow="Keuntungan"
-              title="Mengapa Nakes Homecare butuh website sendiri?"
-              titleAccent="butuh website sendiri?"
-              subtitle="Mudahkan promosi layanan Anda ke pasien baru dan optimalkan manajemen jadwal praktik secara terpusat."
-              className="mb-2 lg:mb-6"
-            />
-          }
+        <SectionHeading
+          eyebrow="Keuntungan"
+          title="Mengapa Nakes Homecare butuh website sendiri?"
+          titleAccent="butuh website sendiri?"
+          subtitle="Mudahkan promosi layanan Anda ke pasien baru dan optimalkan manajemen jadwal praktik secara terpusat."
+          className="mb-10"
         />
+        <BenefitsSection />
       </Section>
 
       {/* ──────── Testimoni ──────── */}

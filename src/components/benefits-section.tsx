@@ -324,7 +324,7 @@ function BenefitCard({
 /* ════════════════════════════════════════════
    Main Section Component
    ════════════════════════════════════════════ */
-export function BenefitsSection({ header }: { header?: React.ReactNode }) {
+export function BenefitsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const cycleRef = useRef<NodeJS.Timeout | undefined>(undefined);
@@ -362,10 +362,8 @@ export function BenefitsSection({ header }: { header?: React.ReactNode }) {
 
   return (
     <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
-      {/* ── Left Column: Header + Cards ── */}
-      <div className="space-y-8">
-        {header}
-
+      {/* ── Left Column: Cards ── */}
+      <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {benefitsData.map((b) => {
             const isActive = activeIndex === b.id;
