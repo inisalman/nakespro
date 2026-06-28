@@ -9,6 +9,7 @@ import { Logo } from "@/components/logo";
 import { PricingSection } from "@/components/pricing-section";
 import { TypingWords } from "@/components/typing-words";
 import { TemplateMockup } from "@/components/template-mockup";
+import { PortfolioShowcase } from "@/components/portfolio-showcase";
 import { TestimonialSection } from "@/components/testimonial-section";
 import { WhatsappFab } from "@/components/whatsapp-fab";
 import { MobileNav } from "@/components/mobile-nav";
@@ -221,37 +222,9 @@ export default function Home() {
           eyebrow="Template"
           title="Pilihan template siap pakai"
           titleAccent="siap pakai"
-          subtitle="Klik untuk melihat demo langsung. Semua template responsif dan bisa disesuaikan."
+          subtitle="Klik untuk melihat demo langsung. Semua template responsif dan bisa disesuaikan dengan kebutuhan praktik Anda."
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {portfolio.map((item) => (
-            <a
-              key={item.id}
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group overflow-hidden rounded-2xl border border-line bg-white transition-all hover:border-teal/30 hover:shadow-card"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
-                <Image
-                  src={`/${item.id}.webp`}
-                  alt={`Pratinjau ${item.name}`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-teal-strong">
-                  {item.category}
-                </p>
-                <h3 className="mt-1 font-semibold text-ink">{item.name}</h3>
-                <p className="mt-0.5 text-xs text-text-muted">{item.character}</p>
-              </div>
-            </a>
-          ))}
-        </div>
+        <PortfolioShowcase />
       </Section>
 
       {/* ──────── FAQ ──────── */}
