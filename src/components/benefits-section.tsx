@@ -451,7 +451,7 @@ export function BenefitsSection() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -18, scale: 0.96 }}
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full flex items-center justify-center"
+                className="w-full h-full flex items-center justify-center"
               >
                 {activeIndex === 0 && <GoogleSearchAnimation />}
                 {activeIndex === 1 && <TreatmentReportAnimation />}
@@ -485,7 +485,7 @@ function GoogleSearchAnimation() {
   }, []);
 
   return (
-    <div className="w-full max-w-sm bg-white rounded-2xl border border-line shadow-lg overflow-hidden flex flex-col">
+    <div className="w-full max-w-sm bg-white rounded-2xl border border-line shadow-lg overflow-hidden flex flex-col h-full">
       {/* Browser chrome */}
       <div className="bg-[#F1F3F4] border-b border-line px-4 py-2.5 flex items-center gap-2.5">
         <div className="flex gap-1.5">
@@ -634,7 +634,7 @@ function TreatmentReportAnimation() {
   }, []);
 
   return (
-    <div className="w-full max-w-sm bg-white rounded-2xl border border-line shadow-lg overflow-hidden flex flex-col">
+    <div className="w-full max-w-sm bg-white rounded-2xl border border-line shadow-lg overflow-hidden flex flex-col h-full">
       {/* Header */}
       <div className="border-b border-line px-5 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
@@ -848,7 +848,7 @@ function InvoiceAnimation() {
   }, [status]);
 
   return (
-    <div className="w-full max-w-sm bg-white rounded-2xl border border-line shadow-lg overflow-hidden flex flex-col">
+    <div className="w-full max-w-sm bg-white rounded-2xl border border-line shadow-lg overflow-hidden flex flex-col h-full">
       {/* Header */}
       <div className="border-b border-line px-5 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
@@ -963,7 +963,7 @@ function InvoiceAnimation() {
    ════════════════════════════════════════════ */
 function CredibilityAnimation() {
   return (
-    <div className="w-full max-w-sm bg-white rounded-2xl border border-line shadow-lg overflow-hidden">
+    <div className="w-full max-w-sm bg-white rounded-2xl border border-line shadow-lg overflow-hidden flex flex-col h-full">
       {/* Browser URL bar */}
       <div className="bg-[#F1F3F4] border-b border-line px-4 py-2.5 flex items-center gap-2">
         <div className="flex gap-1.5">
