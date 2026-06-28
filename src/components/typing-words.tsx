@@ -1,20 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 type TypingWordsProps = {
   words: string[];
-  /** ms per character while typing */
   typingSpeed?: number;
-  /** ms per character while deleting */
   deletingSpeed?: number;
-  /** ms to hold a fully-typed word before deleting */
   pauseTime?: number;
 };
 
 /**
  * Animated, typewriter-style word cycler.
- * Types a word, pauses, deletes it, then moves on to the next word — looping forever.
+ * Reserves space for the longest word so the layout never jumps.
  */
 export function TypingWords({
   words,
@@ -25,6 +22,11 @@ export function TypingWords({
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState("");
   const [phase, setPhase] = useState<"typing" | "deleting">("typing");
+
+  const longestWord = useMemo(
+    () => words.reduce((a, b) => (a.length >= b.length ? a : b), ""),
+    [words]
+  );
 
   useEffect(() => {
     const current = words[wordIndex % words.length] ?? "";
@@ -55,12 +57,26 @@ export function TypingWords({
   }, [text, phase, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
 
   return (
-    <span className="inline text-teal" aria-label={words.join(", ")}>
-      {text}
+    <span
+      className="relative inline-block text-teal"
+      aria-label={words.join(", ")}
+    >
+      {/* Invisible clone of the longest word — reserves layout space */}
+      <span aria-hidden className="invisible whitespace-nowrap">
+        {longestWord}
+      </span>
+
+      {/* The actual typed text overlays the spacer */}
       <span
-        aria-hidden
-        className="ml-0.5 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] animate-pulse rounded-full bg-teal align-middle"
-      />
+        aria-hidden="true"
+        className="absolute left-0 top-0 whitespace-nowrap"
+      >
+        {text}
+        <span
+          aria-hidden
+          className="ml-0.5 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] animate-pulse rounded-full bg-teal align-middle"
+        />
+      </span>
     </span>
   );
 }
