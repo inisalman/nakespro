@@ -214,7 +214,7 @@ function BenefitCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "group relative w-full text-left rounded-2xl transition-all duration-500 overflow-hidden",
+        "group relative w-full text-left rounded-2xl transition-all duration-500 overflow-hidden min-h-[220px]",
         "border",
         isActive
           ? "bg-white shadow-lg ring-1"
