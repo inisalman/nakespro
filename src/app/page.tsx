@@ -104,7 +104,7 @@ export default function Home() {
                   "Fisioterapi",
                 ]}
               />
-              <br className="hidden sm:block" />
+              <br />
               mulai dari{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 text-teal">25 Ribu</span>
