@@ -69,7 +69,7 @@ export function TypingWords({
       {/* The actual typed text overlays the spacer */}
       <span
         aria-hidden="true"
-        className="absolute left-0 top-0 whitespace-nowrap"
+        className="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap"
       >
         {text}
         <span
