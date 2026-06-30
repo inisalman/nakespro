@@ -197,7 +197,7 @@ export const testimonials = [
   },
   {
     initial: "DA",
-    name: "dr. Dian Ayu, S.Kep",
+    name: "Ns. Dian Ayu, S.Kep",
     role: "Homecare & Injeksi",
     city: "Surabaya",
     rating: 5,
